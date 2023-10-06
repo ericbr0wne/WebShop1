@@ -1,9 +1,12 @@
 ﻿
 // <product list CSV or txt>
-List<string> product = new List<string>();
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using WebShop1;
+
+
 // <customer list csv or txt>
 List<string> customer = new List<string>();
-
 
 //  string input for loginCustomer
 
@@ -19,18 +22,85 @@ while (true)
 
 {
 
-    Console.WriteLine("Hej och välkommen hit!");
-    Console.WriteLine();
-    Console.WriteLine("Välj ett alternativ nedan:");
-    Console.WriteLine();
-    Console.WriteLine("1. Produkter");
-    Console.WriteLine("2. Login");
-    Console.WriteLine("3. Avsluta");
-    Console.ReadKey();
-    Console.Clear();
+    Console.WriteLine("Hello and welcome to the BEST shop in the world\n");
+    Console.WriteLine("Please choose from below:\n");
+    Console.WriteLine("1. Products");
+    Console.WriteLine("2. Login/Register");
+    Console.WriteLine("3. Exit");
+
+    switch (Console.ReadLine())
+    {
+        case "1":
+            Console.Clear();
+            Console.WriteLine("Here is the list of avaiable items for sale:\n");
+            Product.itemList();
+            Console.ReadLine();
+            Console.Clear();
+            break;
+
+        case "2":
+            Console.Clear();
+            Console.WriteLine("Welcome to our login page.\n");
+            Console.WriteLine("Do you want to: ");
+            Console.WriteLine("1. Login");
+            Console.WriteLine("2. Register");
+            Console.WriteLine("3. Return to main page");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    //go to login class
+                    Console.Clear();
+                    Console.WriteLine("case 1");
+
+                    Console.ReadKey();
+                    Console.Clear();
 
 
+                    break;
+                case "2":
+                    //go to register class
+                    Console.Clear();
 
+                    Console.WriteLine("case 2");
+                    Console.ReadKey();
+                    Console.Clear();
+                    break;
+                case "3":
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("You didn't pick a valid option.");
+                    Console.WriteLine("Please choose 1, 2 or 3.");
+                    Console.WriteLine("Please press enter to continue!");
+
+                    //void function return to menu2
+                    Console.ReadKey();
+                    Console.Clear();
+                    continue;
+            }
+            Console.Clear();
+            break;
+
+        case "3":
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("Thank you for shopping in the BEST shop.");
+            Console.WriteLine("Please come again!");
+            break;
+
+
+        default:
+            Console.Clear();
+            Console.WriteLine("You didn't pick a valid option.");
+            Console.WriteLine("Please choose 1, 2 or 3.");
+            Console.WriteLine("Please press enter to continue!");
+            Console.ReadKey();
+            Console.Clear();
+            break;
+
+    }
+    break;
     //if option 1
     //foreach
     //Pickoption
