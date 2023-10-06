@@ -1,2 +1,2 @@
-﻿Äpple
-Bärs
+﻿Äpple,15
+Bärs,12

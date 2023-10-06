@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebShop1;
 
-internal class Login
+public class Login
 {
 
 

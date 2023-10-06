@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebShop1
+namespace WebShop1;
+
+public class Register
 {
-    internal class Register
-    {
-    }
+
+
+
+
 }
