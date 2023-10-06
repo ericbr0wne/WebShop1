@@ -1,19 +1,17 @@
 ﻿
 // <product list CSV or txt>
+List<string> product = new List<string>();
 // <customer list csv or txt>
+List<string> customer = new List<string>();
+
 
 //  string input for loginCustomer
-//  save loginCustomer in csv file in folder
 
 /*
-
-using System.Collections.Generic;
 
 LOGIN
 userInput creates a new User<list>
 username: Password:
-
-
 
 */
 
