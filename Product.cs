@@ -8,7 +8,7 @@ namespace WebShop1;
 
 public class Product
 {
-
+    int position = 1;
     public static void itemList()
     {
         Dictionary<string, int> product = new Dictionary<string, int>();
@@ -28,7 +28,6 @@ public class Product
 
             Console.WriteLine(splitLine[0] + " " + splitLine[1] + ":-");
         }
-
 
     }
 
