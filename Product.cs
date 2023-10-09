@@ -28,6 +28,50 @@ public class Product
 
             Console.WriteLine(splitLine[0] + " " + splitLine[1] + ":-");
         }
+    }
+
+    //add items to shoppingcart = addedProductList
+
+    public static void appendToList()
+
+    {
+
+        string? inputToShoppingCart = string.Empty;
+        inputToShoppingCart = Console.ReadLine();
+
+        File.AppendAllText("../../../addedProductList.txt", inputToShoppingCart + Environment.NewLine); //E.NewLine, means that the code from file is more plattform independent
+        string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
+
+    }
+
+    //print shoppingCart = addedProductList
+
+
+    public static void shoppingCart()
+    {
+        //Dictionary<string, int> product= new Dictionary<string, int>();
+        string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
+        Console.WriteLine("Your Shopping Cart: "); 
+
+        foreach (string item in addedProductList)
+        {
+            Console.WriteLine(item);
+        }
+
+
+        /* Calculate the total price
+     
+        int totalPrice = 0;
+
+        foreach (string item in addedProductList)
+        {
+            
+                totalPrice += 
+            
+        }
+
+        Console.WriteLine("Total Price: " + totalPrice);
+        */
 
     }
 
