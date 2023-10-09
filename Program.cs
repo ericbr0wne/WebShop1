@@ -34,7 +34,15 @@ while (true)
             Console.Clear();
             Console.WriteLine("Here is the list of avaiable items for sale:\n");
             Product.itemList();
-            Console.ReadLine();
+            switch (Console.ReadLine())
+            {
+                case "1": // pick first product 
+                    
+                    Product.cart();
+                    break;
+            }
+
+            Console.ReadKey();
             Console.Clear();
             break;
 
