@@ -30,6 +30,35 @@ public class Product
         }
 
 
+
+    }
+    public static void appendToList()
+
+    {
+
+        string? input = string.Empty;
+        input = Console.ReadLine();
+
+        File.AppendAllText("../../../addedProductList.txt", input + Environment.NewLine);
+        string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
+
+        string inputShoppingCart = input;
+
+    }
+
+
+    public static void shoppingCart()
+    {
+
+        string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
+        Console.WriteLine("Your Shopping Cart: "); 
+
+        foreach (string item in addedProductList)
+        {
+            Console.WriteLine(item);
+        }
+
+
     }
 
 }

@@ -32,8 +32,27 @@ while (true)
     {
         case "1":
             Console.Clear();
-            Console.WriteLine("Here is the list of avaiable items for sale:\n");
+            Console.WriteLine("Here is the list of available items for sale:\n");
             Product.itemList();
+            Console.WriteLine("Add item by typing and press Enter:");
+            //Append to list
+            Product.appendToList();
+            Console.WriteLine("Do you wish to add something else? y/n?" );
+ 
+            switch (Console.ReadLine())
+            {
+                case "y":
+                    Console.WriteLine("Add item by typing and press Enter:");
+                    Product.appendToList();
+                    break;
+
+                case "n":
+
+                    //go to shopping cart menu
+                    Product.shoppingCart();
+                    break;
+            }
+
             Console.ReadLine();
             Console.Clear();
             break;
@@ -89,7 +108,7 @@ while (true)
             Console.WriteLine("Please come again!");
             break;
 
-
+            //Det krashar efter denna har visats en gång kvittar om man skriver rätt eller fel igen 
         default:
             Console.Clear();
             Console.WriteLine("You didn't pick a valid option.");
