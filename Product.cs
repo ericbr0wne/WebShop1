@@ -11,7 +11,7 @@ namespace WebShop1;
 
 public class Product
 {
-
+    int position = 1;
     public static void itemList()
     {
         Dictionary<string, int> product = new Dictionary<string, int>();
@@ -62,6 +62,48 @@ public class Product
             cart.Add(splitLine[0]);
 
         }
+    }
+
+    //add items to shoppingcart = addedProductList
+
+    public static void appendToList()
+
+    {
+
+        string? inputToShoppingCart = string.Empty;
+        inputToShoppingCart = Console.ReadLine();
+
+        File.AppendAllText("../../../addedProductList.txt", inputToShoppingCart + Environment.NewLine); //E.NewLine, means that the code from file is more plattform independent
+        string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
+
+    }
+
+    //print shoppingCart = addedProductList
+
+
+    public static void shoppingCart()
+    {
+        //Dictionary<string, int> product= new Dictionary<string, int>();
+        string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
+        Console.WriteLine("Your Shopping Cart: "); 
+
+        foreach (string item in addedProductList)
+        {
+            Console.WriteLine(item);
+        }
+
+
+        /* Calculate the total price
+     
+        int totalPrice = 0;
+
+        foreach (string item in addedProductList)
+        {
+            
+                totalPrice += 
+            
+        }
+
 
         cart2.Add(cart[0]); // add first item in product list to cart
 
@@ -73,6 +115,10 @@ public class Product
         {
             Console.WriteLine(item); // writes out the shopping cart
         }
+
+        Console.WriteLine("Total Price: " + totalPrice);
+        */
+
 
     }
 
