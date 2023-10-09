@@ -40,26 +40,16 @@ while (true)
             Console.Clear();
             Console.WriteLine("Here is the list of available items for sale:\n");
             Product.itemList();
-            Console.WriteLine("Add item by typing and press Enter:");
-            //Append to list
-            Product.appendToList();
-            Console.WriteLine("Do you wish to add something else? y/n?" );
- 
             switch (Console.ReadLine())
             {
-                case "y":
-                    Console.WriteLine("Add item by typing and press Enter:");
-                    Product.appendToList();
-                    break;
-
-                case "n":
-
-                    //go to shopping cart menu
-                    Product.shoppingCart();
+                case "1": // pick first product 
+                    
+                    Product.cart();
                     break;
             }
 
-            Console.ReadLine();
+            Console.ReadKey();
+
             Console.Clear();
             break;
 
