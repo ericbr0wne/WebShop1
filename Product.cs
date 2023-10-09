@@ -41,12 +41,11 @@ public class Product
 
     public static void cart()
     {
-        List<string> cart = new List<string>();
-        List<string> cart2 = new List<string>();
-
 
         Dictionary<string, int> product = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../product.txt");
+        string? newProduct = Console.ReadLine();
+
 
         foreach (string Article in productList)
         {
@@ -54,14 +53,19 @@ public class Product
             string[] splitLine = Article.Split(",");
 
             //Parse string[1] to int
-            if (int.TryParse(splitLine[1], out int price))
+            int.TryParse(splitLine[1], out int price);
+          
+            if (newProduct == splitLine[0])
             {
-                //Add string[0] + int[1] into map
                 product.Add(splitLine[0], price);
+                Console.WriteLine("You just added: " + splitLine[0] + " " + splitLine[1] + ":- to your cart.");
             }
-            cart.Add(splitLine[0]);
 
         }
+        File.AppendAllText("../../../ShoppingCart.txt", newProduct + Environment.NewLine); //E.NewLine, means that the code from file is more plattform independent
+        string[] addedProductList = File.ReadAllLines("../../../ShoppingCart.txt");
+
+
     }
 
     //add items to shoppingcart = addedProductList
@@ -85,7 +89,7 @@ public class Product
     {
         //Dictionary<string, int> product= new Dictionary<string, int>();
         string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
-        Console.WriteLine("Your Shopping Cart: "); 
+        Console.WriteLine("Your Shopping Cart: ");
 
         foreach (string item in addedProductList)
         {
@@ -122,5 +126,5 @@ public class Product
 
     }
 
-    
+
 }

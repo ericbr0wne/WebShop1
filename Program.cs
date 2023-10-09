@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using WebShop1;
 
-
 // <customer list csv or txt>
 List<string> customer = new List<string>();
-
 
 /*
 
@@ -20,14 +18,6 @@ username: Password:
 while (true)
 
 {
-    Console.Clear();
-    Console.WriteLine("What product would you like to add?\n");
-    string? newProd = Console.ReadLine() + ",";
-    Console.WriteLine("\nAnd what price should it have?\n");
-    int? newPrice = Convert.ToInt32(Console.ReadLine());
-
-    Console.WriteLine(newProd + newPrice);
-    // product.Add(newProd+newPrice);
 
     Console.WriteLine("Hello and welcome to the BEST shop in the world\n");
     Console.WriteLine("Please choose from below:\n");
@@ -40,6 +30,7 @@ while (true)
             Console.Clear();
             Console.WriteLine("Here is the list of available items for sale:\n");
             Product.itemList();
+            Console.WriteLine("\nWhat would you like to add to your cart?\n");
             switch (Console.ReadLine())
             {
                 case "1": // pick first product 
