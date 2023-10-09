@@ -8,7 +8,6 @@ using WebShop1;
 // <customer list csv or txt>
 List<string> customer = new List<string>();
 
-//  string input for loginCustomer
 
 /*
 
@@ -21,13 +20,20 @@ username: Password:
 while (true)
 
 {
+    Console.Clear();
+    Console.WriteLine("What product would you like to add?\n");
+    string? newProd = Console.ReadLine() + ",";
+    Console.WriteLine("\nAnd what price should it have?\n");
+    int? newPrice = Convert.ToInt32(Console.ReadLine());
+
+    Console.WriteLine(newProd + newPrice);
+    // product.Add(newProd+newPrice);
 
     Console.WriteLine("Hello and welcome to the BEST shop in the world\n");
     Console.WriteLine("Please choose from below:\n");
     Console.WriteLine("1. Products");
     Console.WriteLine("2. Login/Register");
     Console.WriteLine("3. Exit");
-
     switch (Console.ReadLine())
     {
         case "1":
@@ -57,14 +63,13 @@ while (true)
             Console.Clear();
             break;
 
-        case "2":
+        case "2": //Menu2
             Console.Clear();
             Console.WriteLine("Welcome to our login page.\n");
             Console.WriteLine("Do you want to: ");
             Console.WriteLine("1. Login");
             Console.WriteLine("2. Register");
             Console.WriteLine("3. Return to main page");
-
             switch (Console.ReadLine())
             {
                 case "1":
