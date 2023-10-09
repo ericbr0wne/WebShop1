@@ -75,8 +75,8 @@ while (true)
                 case "2":
                     //go to register class
                     Console.Clear();
-
-                    Console.WriteLine("case 2");
+                    Console.WriteLine("Register");
+                    Register.Insert();
                     Console.ReadKey();
                     Console.Clear();
                     break;
@@ -114,7 +114,7 @@ while (true)
             break;
 
     }
-    break;
+    
     //if option 1
     //foreach
     //Pickoption
