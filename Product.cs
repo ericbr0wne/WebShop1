@@ -62,7 +62,7 @@ public class Product
             }
 
         }
-        File.AppendAllText("../../../ShoppingCart.txt", newProduct + Environment.NewLine); //E.NewLine, means that the code from file is more plattform independent
+        File.AppendAllText("../../../ShoppingCart.txt", newProduct + Environment.NewLine); //E.NewLine, means that we save something to the list on a new line. 
         string[] addedProductList = File.ReadAllLines("../../../ShoppingCart.txt");
 
 
@@ -77,7 +77,7 @@ public class Product
         string? inputToShoppingCart = string.Empty;
         inputToShoppingCart = Console.ReadLine();
 
-        File.AppendAllText("../../../addedProductList.txt", inputToShoppingCart + Environment.NewLine); //E.NewLine, means that the code from file is more plattform independent
+        File.AppendAllText("../../../addedProductList.txt", inputToShoppingCart + Environment.NewLine); //E.NewLine, means that we save something to the list on a new line. 
         string[] addedProductList = File.ReadAllLines("../../../addedProductList.txt");
 
     }
