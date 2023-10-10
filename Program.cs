@@ -7,14 +7,9 @@ using WebShop1;
 // <customer list csv or txt>
 List<string> customer = new List<string>();
 
-/*
 
-LOGIN
-userInput creates a new User<list>
-username: Password:
 
-*/
-
+                   //FUNCTION for the menu choices - Menu Class? 
 while (true)
 
 {
@@ -26,14 +21,18 @@ while (true)
     Console.WriteLine("3. Exit");
     switch (Console.ReadLine())
     {
-        case "1":
+        case "1":  //Products
+            //productList 
+            //addToCartFunction
+            //removeFromCartFunction
+
             Console.Clear();
             Console.WriteLine("Here is the list of available items for sale:\n");
             Product.itemList();
             Console.WriteLine("\nWhat would you like to add to your cart?\n");
             switch (Console.ReadLine())
             {
-                case "1": // pick first product 
+                case "1": // pick first product  
                     
                     Product.cart();
                     break;
@@ -54,7 +53,7 @@ while (true)
             switch (Console.ReadLine())
             {
                 case "1":
-                    //go to login class
+                    //go to login class  
                     Console.Clear();
                     Console.WriteLine("case 1");
 
