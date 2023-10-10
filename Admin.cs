@@ -60,7 +60,7 @@ public class Admin : Product
                 case "2":
                     //Console.WriteLine("2. Remove product");
                     Console.WriteLine("Which item would you like to remove?\n");
-                    Product.itemList();
+                    Product.NrAndReadProductList();
                     Console.WriteLine();
                     string? productRemove = Console.ReadLine();
                     foreach (string Article in productList)

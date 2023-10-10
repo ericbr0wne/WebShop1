@@ -30,13 +30,13 @@ while (true)
     {
         Console.Clear();
         Console.WriteLine("Here is the list of available items for sale:\n");
-        Product.itemList();
+        Product.NrAndReadProductList();
         Console.WriteLine("\nWhat would you like to add to your cart?\n");
         switch (Console.ReadLine())
         {
             case "1": // pick first product 
 
-                Product.cart();
+                ShoppingCart.AddCart();
                 break;
         }
 
@@ -97,7 +97,7 @@ while (true)
 
     }
 
-    string input = Console.ReadLine();
+    string? input = Console.ReadLine();
 
     switch (position)
     {
