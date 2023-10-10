@@ -7,22 +7,17 @@ using WebShop1;
 // <customer list csv or txt>
 List<string> customer = new List<string>();
 
-/*
 
-LOGIN
-userInput creates a new User<list>
-username: Password:
-
-*/
 int position = 0;
 
+
+         
 while (true)
 
 {
 
     if (position == 0)
     {
-
         Console.Clear();
         Console.WriteLine("Hello and welcome to the BEST shop in the world\n");
         Console.WriteLine("Please choose from below:\n");
@@ -50,7 +45,7 @@ while (true)
         Console.Clear();
         break;
     }
-
+  
     if (position == 20)
     {
         Console.Clear();
