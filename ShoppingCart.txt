@@ -1,10 +1,4 @@
-Äpple,15
-Bärs,12
 Cider,25
-Äpple,15
+Bärs,12
 Chips,25
-Vodka,45
-Choklad,20
-Bärs,12
-Bärs,12
-Bärs,12
+Äpple,15

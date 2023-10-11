@@ -1,9 +1,14 @@
-﻿namespace WebShop1;
+﻿using System.Collections.Generic;
+using System.IO;
+
+namespace WebShop1;
 
 public class ShoppingCart
 {
     public static void ReadCart() //Reads cart + calculate and show total cost
     {
+        Console.Clear();
+
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
@@ -32,6 +37,7 @@ public class ShoppingCart
     {
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../product.txt");
+        Console.Clear();
 
         Console.WriteLine("This is the product list:");
         Product.NrAndReadProductList(); //read productList
@@ -53,9 +59,31 @@ public class ShoppingCart
     public static void RemoveCart()
 
     {
+        Console.Clear();
         ReadCart();
+        Console.WriteLine();
+        Console.WriteLine("What product do you wish to remove?");
+        Console.WriteLine();
 
+        {
+            List<string> cartList = File.ReadAllLines("../../../ShoppingCart.txt").ToList(); //To be able to remove from list
+            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt"); //To be able to count
 
+            Console.WriteLine();
+            string? input = Console.ReadLine();
+
+            for (int i = 0; i <= shoppingCartList.Length; i++)
+            {
+                if (input == i.ToString())
+                {
+                    cartList.RemoveAt(i - 1);
+                    File.WriteAllLines("../../../ShoppingCart.txt", cartList);
+                }
+            }
+        }
     }
-
 }
+
+
+
+
