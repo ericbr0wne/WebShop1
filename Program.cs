@@ -15,6 +15,8 @@ while (true)
         Console.Clear();
         ShoppingCart.AddCart();
         ShoppingCart.ReadCart();
+        ShoppingCart.RemoveCart();
+        ShoppingCart.ReadCart();
         Console.WriteLine("Hello and welcome to the BEST shop in the world\n");
         Console.WriteLine("Please choose from below:\n");
         Console.WriteLine("1. Products");
