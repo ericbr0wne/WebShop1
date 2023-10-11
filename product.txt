@@ -1,2 +1,6 @@
 ﻿Äpple,15
 Bärs,12
+Cider,25
+Choklad,20
+Chips,25
+Vodka,45
