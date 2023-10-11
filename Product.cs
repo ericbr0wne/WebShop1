@@ -14,7 +14,7 @@ public class Product
     public static void NrAndReadProductList() //add nr. and print productList
     {
         Dictionary<string, int> cartList = new Dictionary<string, int>();
-        string[] productList = File.ReadAllLines("../../../product.txt");
+        string[] productList = File.ReadAllLines("../../../Product.txt");
         int x = 1;
 
         for (int y = 0; y < productList.Length; y++)

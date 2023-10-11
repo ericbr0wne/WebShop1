@@ -26,7 +26,7 @@ public class Admin : Product
         bool adminCheck = true;
 
         Dictionary<string, int> product = new Dictionary<string, int>();
-        string[] productList = File.ReadAllLines("../../../product.txt");
+        string[] productList = File.ReadAllLines("../../../Product.txt");
 
         while (adminCheck)
         {

@@ -36,7 +36,7 @@ public class ShoppingCart
 
     {
         Dictionary<string, int> cartList = new Dictionary<string, int>();
-        string[] productList = File.ReadAllLines("../../../product.txt");
+        string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
 
         Console.WriteLine("This is the product list:");
