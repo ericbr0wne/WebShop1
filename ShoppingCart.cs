@@ -2,22 +2,28 @@
 
 public class ShoppingCart
 {
-    public static void ReadCart()
-
+    public static void ReadCart() //Reads cart + calculate and show total cost
     {
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
+        int cartSum = 0;
+        int x = 1;
 
         foreach (var line in shoppingCartList)
         {
             string[] splitLine = line.Split(",");
-            if (int.TryParse(splitLine[1], out int price))
-            {
-
-                cartList.Add(splitLine[0], price);
-            }
-            Console.WriteLine(splitLine[0] + " " + splitLine[1] + ":-");
+            int.TryParse(splitLine[1], out int price);
+            cartSum += price;
         }
+        Console.WriteLine("This is in your cart: ");
+        foreach (string line in shoppingCartList)
+        {
+            string[] splitLine = line.Split(",");
+            Console.WriteLine(x + ". " + splitLine[0]);
+            x++;
+        }
+        Console.WriteLine();
+        Console.WriteLine("Total sum: " + cartSum + ":-");
     }
 
 
@@ -26,8 +32,6 @@ public class ShoppingCart
     {
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../product.txt");
-        string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
-
 
         Console.WriteLine("This is the product list:");
         Product.NrAndReadProductList(); //read productList
@@ -35,20 +39,16 @@ public class ShoppingCart
         Console.WriteLine("Choose the number of product to add to Shopping Cart: ");
         Console.WriteLine();
         string? input = Console.ReadLine();
+        Console.Clear();
 
-        for (int i = 0; i < productList.Length; i++)
+        for (int i = 0; i <= productList.Length; i++)
         {
-            string[] splitLine = productList[i].Split(",");
-
             if (input == i.ToString())
             {
                 File.AppendAllText("../../../ShoppingCart.txt", productList[i - 1] + Environment.NewLine);
-
             }
         }
-
     }
-
 
     public static void RemoveCart()
 

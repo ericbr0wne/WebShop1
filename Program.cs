@@ -3,22 +3,18 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using WebShop1;
-
 // <customer list csv or txt>
 List<string> customer = new List<string>();
 
-
-int position = 0;
-
-
+int menuChoice = 0;
          
 while (true)
-
 {
-
-    if (position == 0)
+    if (menuChoice == 0)
     {
         Console.Clear();
+        ShoppingCart.AddCart();
+        ShoppingCart.ReadCart();
         Console.WriteLine("Hello and welcome to the BEST shop in the world\n");
         Console.WriteLine("Please choose from below:\n");
         Console.WriteLine("1. Products");
@@ -26,27 +22,41 @@ while (true)
         Console.WriteLine("3. Exit");
     }
 
-    if (position == 10)
+    if (menuChoice == 1) //Product menu
     {
         Console.Clear();
-        Console.WriteLine("Here is the list of available items for sale:\n");
+        Console.WriteLine("This is our avaiable products: ");
         Product.NrAndReadProductList();
-        Console.WriteLine("\nWhat would you like to add to your cart?\n");
+        Console.WriteLine();
+        Console.WriteLine("If you want to add products to your cart,");
+        Console.WriteLine("Please login first.");
+        Console.WriteLine();
+        Console.WriteLine("1. Login");
+        Console.WriteLine("2. Return to main menu");
+        Console.WriteLine("3. Exit");
+
         switch (Console.ReadLine())
         {
-            case "1": // pick first product 
-
-                ShoppingCart.AddCart();
+            case "1":
+                menuChoice = 2;
+                continue;
+            case "2":
+                menuChoice = 0;
+                continue;
+            case "3":
+                break;
+            default:
+                Console.Clear();
+                Console.WriteLine("You didn't pick a valid option.");
+                Console.WriteLine("Please choose 1, 2 or 3.");
+                Console.WriteLine("Please press enter to continue!");
+                Console.ReadKey();
+                Console.Clear();
                 break;
         }
-
-        Console.ReadKey();
-
-        Console.Clear();
-        break;
     }
   
-    if (position == 20)
+    if (menuChoice == 2)
     {
         Console.Clear();
         Console.WriteLine("Welcome to our login page.\n");
@@ -56,7 +66,7 @@ while (true)
         Console.WriteLine("3. Return to main page");
         switch (Console.ReadLine())
         {
-            case "1":
+            case "1": 
                 //go to login class
                 Console.Clear();
                 Console.WriteLine("case 1");
@@ -84,34 +94,32 @@ while (true)
                 Console.ReadKey();
                 continue;
         }
-        position = 0;
+        menuChoice = 0;
     }
 
-    if (position == 30)
+    if (menuChoice == 3)
     {
         Console.Clear();
         Console.WriteLine();
-        Console.WriteLine("Thank you for shopping in the BEST shop.");
-        Console.WriteLine("Please come again!");
         break;
 
     }
 
     string? input = Console.ReadLine();
 
-    switch (position)
+    switch (menuChoice)
     {
         case 0:
             switch (input)
             {
                 case "1":
-                    position = 10;
+                    menuChoice = 1;
                     break;
                 case "2":
-                    position = 20;
+                    menuChoice = 2;
                     break;
                 case "3":
-                    position = 30;
+                    menuChoice = 3;
                     break;
                 default:
                     Console.Clear();
@@ -126,4 +134,4 @@ while (true)
     }
 }
 
-   
+Console.WriteLine("Thank you for shopping at WebShop1. Please come again!");
