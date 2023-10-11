@@ -1,10 +1,4 @@
-﻿
-// <product list CSV or txt>
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using WebShop1;
-// <customer list csv or txt>
-List<string> customer = new List<string>();
+﻿using WebShop1;
 
 int menuChoice = 0;
          
@@ -13,15 +7,12 @@ while (true)
     if (menuChoice == 0)
     {
         Console.Clear();
-        ShoppingCart.AddCart();
-        ShoppingCart.ReadCart();
-        ShoppingCart.RemoveCart();
-        ShoppingCart.ReadCart();
-        Console.WriteLine("Hello and welcome to the BEST shop in the world\n");
+        Console.WriteLine("Welcome to WebShop1\n");
         Console.WriteLine("Please choose from below:\n");
         Console.WriteLine("1. Products");
-        Console.WriteLine("2. Login/Register");
-        Console.WriteLine("3. Exit");
+        Console.WriteLine("2. Login");
+        Console.WriteLine("3. Register");
+        Console.WriteLine("4. Exit");
     }
 
     if (menuChoice == 1) //Product menu
@@ -30,12 +21,10 @@ while (true)
         Console.WriteLine("This is our avaiable products: ");
         Product.NrAndReadProductList();
         Console.WriteLine();
-        Console.WriteLine("If you want to add products to your cart,");
-        Console.WriteLine("Please login first.");
-        Console.WriteLine();
+        Console.WriteLine("If you want to add products to your cart \nPlease login first");
         Console.WriteLine("1. Login");
-        Console.WriteLine("2. Return to main menu");
-        Console.WriteLine("3. Exit");
+        Console.WriteLine("2. Return to main page");
+        Console.WriteLine("3. Exit webshop");
 
         switch (Console.ReadLine())
         {
@@ -46,6 +35,7 @@ while (true)
                 menuChoice = 0;
                 continue;
             case "3":
+                menuChoice = 4;
                 break;
             default:
                 Console.Clear();
@@ -64,30 +54,18 @@ while (true)
         Console.WriteLine("Welcome to our login page.\n");
         Console.WriteLine("Do you want to: ");
         Console.WriteLine("1. Login");
-        Console.WriteLine("2. Register");
-        Console.WriteLine("3. Return to main page");
+        Console.WriteLine("2. Return to main page");
         switch (Console.ReadLine())
         {
-            case "1": 
+            case "1":
                 //go to login class
-                Console.Clear();
-                Console.WriteLine("case 1");
-                Console.ReadKey();
-                Console.Clear();
+                //login.login
+                Console.WriteLine("login");
                 break;
 
             case "2":
-                //go to register class
-                Console.Clear();
-                Console.WriteLine("Register");
-                Register.Insert();
-                Console.ReadKey();
-                Console.Clear();
-                break;
-
-            case "3":
-                break;
-
+                menuChoice = 0;
+                continue;
             default:
                 Console.Clear();
                 Console.WriteLine("You didn't pick a valid option.");
@@ -100,6 +78,36 @@ while (true)
     }
 
     if (menuChoice == 3)
+    {
+        Console.Clear();
+        Console.WriteLine("Welcome to our register page.\n");
+        Console.WriteLine("Do you want to: ");
+        Console.WriteLine("1. Register");
+        Console.WriteLine("2. Return to main page");
+        switch (Console.ReadLine())
+        {
+            case "1":
+                //go to register class
+                Register.RegisterCustomer();
+                menuChoice = 2;
+                continue;
+            case "2":
+                menuChoice = 0;
+                continue;
+            default:
+                Console.Clear();
+                Console.WriteLine("You didn't pick a valid option.");
+                Console.WriteLine("Please choose 1, 2, 3 or 4.");
+                Console.WriteLine("Please press enter to continue!");
+                Console.ReadKey();
+                continue;
+        }
+    }
+
+        
+
+
+    if (menuChoice == 4)
     {
         Console.Clear();
         Console.WriteLine();
@@ -123,10 +131,13 @@ while (true)
                 case "3":
                     menuChoice = 3;
                     break;
+                case "4":
+                    menuChoice = 4;
+                    break;
                 default:
                     Console.Clear();
                     Console.WriteLine("You didn't pick a valid option.");
-                    Console.WriteLine("Please choose 1, 2 or 3.");
+                    Console.WriteLine("Please choose 1, 2, 3 or 4.");
                     Console.WriteLine("Please press enter to continue!");
                     Console.ReadKey();
                     Console.Clear();
