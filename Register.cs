@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace WebShop1;
 
 public class Register
-{
-    public static void Insert()
+{   public static void RegisterCustomer()
     {
-        Console.WriteLine();
+        Console.Clear();
+        Console.WriteLine("Register\n");
         Console.Write("New Username: ");
         string username = Console.ReadLine();
 
@@ -54,7 +54,8 @@ public class Register
         Console.Clear();
         Console.WriteLine("Register");
         Console.WriteLine();
-        Console.WriteLine("Thank you for signing up");
+        Console.WriteLine("Thank you for signing up " + username + "\nPress any key to continue\n");
+        Console.ReadKey();
 
         
         File.AppendAllText("../../../Register.txt", $"{username}+{password}" + Environment.NewLine);
