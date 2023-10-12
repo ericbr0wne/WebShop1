@@ -81,4 +81,32 @@ public class Product
         }
     }
 
+
+    public static void RemoveCart()
+
+    {
+        Console.Clear();
+        Console.WriteLine("This is the product list:");
+        NrAndReadProductList();
+        Console.WriteLine();
+        Console.WriteLine("What product do you wish to remove?");
+        Console.WriteLine();
+
+        {
+            List<string> cartList = File.ReadAllLines("../../../Shoppingcart.txt").ToList(); //To be able to remove from list
+            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt"); //To be able to count
+            Console.WriteLine();
+            string? input = Console.ReadLine();
+
+            for (int i = 0; i <= shoppingCartList.Length; i++)
+            {
+                if (input == i.ToString())
+                {
+                    cartList.RemoveAt(i - 1);
+                    File.WriteAllLines("../../../ShoppingCart.txt", cartList);
+                    NrAndReadProductList();
+                }
+            }
+        }
+    }
 }

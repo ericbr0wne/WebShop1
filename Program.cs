@@ -1,5 +1,7 @@
 ﻿using WebShop1;
 
+Customer.CustomerLogin();
+
 int menuChoice = 0;
 
 Receipt.TotalCost();
