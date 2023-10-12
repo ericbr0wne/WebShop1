@@ -21,7 +21,7 @@ public class Admin : Product
             Console.WriteLine("*********** Admin ***********\n");
             Console.WriteLine("1. Add product");
             Console.WriteLine("2. Remove product");
-            Console.WriteLine("3. Check costumer list");
+            Console.WriteLine("3. Check costumer information");
             Console.WriteLine("4. Edit costumer information");
             Console.WriteLine("5. Check costumer shoppingcart");
             Console.WriteLine("6. Check costumer transactions");
@@ -78,65 +78,69 @@ public class Admin : Product
                         continue;
                     }
 
-                    if (adminChoice == 3)
+                    if (adminChoice == 3) //("3. Check costumer information");
+                    {
+                        Customer.readAllInfo();
+                        adminChoice = 0;
+                        continue;
+                    }
+
+                    if (adminChoice == 4) //("4. Edit costumer information");
+                    {
+                        string? adminEditCustomer = Console.ReadLine();
+                        int editCustomer = 0;
+                        Console.WriteLine("Do you want to:");
+                        Console.WriteLine("1. Change username");
+                        Console.WriteLine("2. Change password");
+                        Console.WriteLine("3. Remove customer");
+                        switch (Console.ReadLine())
+                        {
+                            case "1":
+                                editCustomer = 1;
+                                continue;
+                            case "2":
+                                editCustomer = 2;
+                                continue;
+                            case "3":
+                                editCustomer = 3;
+                                break;
+                            default:
+                                Console.Clear();
+                                Console.WriteLine("You didn't pick a valid option.");
+                                Console.WriteLine("Please choose 1, 2 or 3.");
+                                Console.WriteLine("Please press enter to continue!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                        }
+                    }
+
+                    if (adminChoice == 5) //("5. Check costumer shoppingcart");
+                    {
+                        continue;
+                    }
+
+                    if (adminChoice == 6) //("6. Check costumer transactions");
                     {
 
+
+
+                        continue;
                     }
+
+                    if (adminChoice == 7) //("7. Logout\n");
+                    {
+
+
+
+                        continue;
+                    }
+
+
+
+
+
                     break;
-
-
-
-
-
-                    /*
-
-
-
-                          case "2":
-                              //Console.WriteLine("2. Remove product");
-                              Console.WriteLine("Which item would you like to remove?\n");
-                              Product.NrAndReadProductList();
-                              Console.WriteLine();
-                              string? productRemove = Console.ReadLine();
-                              foreach (string Article in productList)
-                              {
-                                  //split by the sign ","
-                                  string[] splitLine = Article.Split(",");
-                                  if (productRemove == splitLine[0])
-                                      product.Remove(Article);
-
-                                  Console.WriteLine(splitLine[0] + " " + splitLine[1] + ":-");
-                              }
-
-                              break;
-                          case "3":
-                              // Console.WriteLine("3. Check costumer list");
-
-                              break;
-                          case "4":
-                              // Console.WriteLine("4. Edit costumer information");
-                              break;
-                          case "5":
-                              // Console.WriteLine("5. Check costumer shoppingcart");
-                              break;
-                          case "6":
-                              // Console.WriteLine("6. Check costumer transactions");
-                              break;
-                          case "7":
-                              //Console.WriteLine("7. Logout");
-                              Console.WriteLine("You have now succesfully logged out from Admin");
-                              Console.WriteLine("Please press enter to continue!");
-                              Console.ReadKey();
-                              adminCheck = false;
-                              break;
-                          default:
-                              Console.Clear();
-                              Console.WriteLine("You didn't pick a valid option.");
-                              Console.WriteLine("Please press enter to continue!");
-                              Console.ReadKey();
-                              Console.Clear();
-                              break;
-                              */
 
             }
         }
