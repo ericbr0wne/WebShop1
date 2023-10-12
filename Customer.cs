@@ -8,6 +8,77 @@ namespace WebShop1;
 
 public class Customer
 {
+    public static void readAllInfo()
+    {
+
+        Console.WriteLine("*********** USER INFORMATION ***********");
+        Console.Clear();
+        Dictionary<string, int> customerList = new Dictionary<string, int>();
+        string[] custList = File.ReadAllLines("../../../Customer.txt");
+        int x = 1;
+
+        foreach (string line in custList)
+        {
+            string[] splitLine = line.Split(",");
+            Console.WriteLine("User" + x + ": " + splitLine[0] + "\nPassword: " + splitLine[1]);
+            Console.WriteLine("\n");
+            x++;
+        }
+        Console.WriteLine("Press enter to return");
+        Console.ReadKey();
+
+    }
+
+    public static void EditCust()
+    {
+
+        string? adminEditCustomer = Console.ReadLine();
+        int editCustomer = 0;
+
+        while (editCustomer == 0)
+        Console.WriteLine("Do you want to:");
+        Console.WriteLine("1. Change username");
+        Console.WriteLine("2. Change password");
+        Console.WriteLine("3. Remove user");
+        switch (Console.ReadLine())
+        {
+            case "1":
+                editCustomer = 1;
+                break;
+
+            case "2":
+                editCustomer = 2;
+                break;
+
+            case "3":
+                editCustomer = 3;
+                break;
+
+            default:
+                Console.Clear();
+                Console.WriteLine("You didn't pick a valid option.");
+                Console.WriteLine("Please press enter to continue!");
+                Console.ReadKey();
+                Console.Clear();
+                break;
+        }
+        if (editCustomer == 1) //Change username
+        {
+            
+        }
+
+        if (editCustomer == 2) //Change password
+        {
+
+        }
+
+        if (editCustomer == 3) //remove user
+        {
+
+        }
+
+
+    }
 
     /*
     read shoppingcartCSV(if already existing, read and continue to add in preious file)
