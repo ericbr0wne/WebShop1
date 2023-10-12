@@ -1,7 +1,2 @@
-adasdas+asdasdasdas
-165151+16515154864
-gustav+gustav1
-pelle+pelle2
-sad+gdsfasfe
-bbbb+bbbbbbbbb
-gtfbg+dfdsdsfdfsdfs
+adasdas,asdasdasdas+apple,15-Datum,tid
+165151,16515154864+pear,12-Datum,tid

@@ -4,6 +4,7 @@ int menuChoice = 0;
          
 while (true)
 {
+
     if (menuChoice == 0)
     {
         Console.Clear();
