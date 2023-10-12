@@ -29,6 +29,7 @@ public class ShoppingCart
         }
         Console.WriteLine();
         Console.WriteLine("Total sum: " + cartSum + ":-");
+        
     }
 
 
@@ -60,7 +61,6 @@ public class ShoppingCart
 
     {
         Console.Clear();
-        ReadCart();
         Console.WriteLine();
         Console.WriteLine("What product do you wish to remove?");
         Console.WriteLine();
