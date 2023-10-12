@@ -81,7 +81,7 @@ public class Customer : Product
 
 
     }
-
+   
     public static void CustomerLogin()
     {
 
@@ -118,18 +118,22 @@ public class Customer : Product
                             customerChoice = 3;
                             break;
                         case "4":
+                            Console.WriteLine("Den funkar hit iallafall");
                             customerChoice = 6;
-                            CustomerCheck = false;
                             break;
                         default:
                             Console.Clear();
                             Console.WriteLine("No valid option, Try again.\n");
                             break;
+                           
+                    }
+                    if (customerChoice == 6)
+                    {
+                        break;
                     }
 
 
-
-                    if (customerChoice == 1) // read in product list
+                        if (customerChoice == 1) // read in product list
                     {
                         Console.Clear();
                         NrAndReadProductList();
@@ -182,6 +186,7 @@ public class Customer : Product
                             Console.WriteLine("1. Do you want to checkout");
                             Console.WriteLine("2. Do you want to add products");
                             Console.WriteLine("3. Do you want to remove products");
+                            Console.WriteLine("4. Return to customer menu");
                             customerInput = Console.ReadLine();
                             switch (customerInput)
                             {
@@ -189,8 +194,17 @@ public class Customer : Product
                                     customerChoice = 7;
                                     break;
                                 case "2":
-                                    customerChoice = 8;
+                                    ShoppingCart.ReadCart();
+                                    ShoppingCart.AddCart();
+                                    continue;
+                                case "3":
+                                    ShoppingCart.ReadCart();
+                                    ShoppingCart.RemoveCart();
+                                    continue;
+                                case "4":
+                                    customerChoice = 0;
                                     break;
+
                                 default:
                                     Console.Clear();
                                     Console.WriteLine("No valid option, Try again.\n");
@@ -198,86 +212,30 @@ public class Customer : Product
 
 
                             }
-                            if (customerChoice == 8)
+                            if (customerChoice == 7) //Checkout function
                             {
-                                ShoppingCart.RemoveCart();
+                                Console.Clear();
+                                //spara en fil här som heter reciept.
+                                //spara även username och password????
+                                //vi har ju inget username och password här inne...
+
+                                Console.ReadKey();
+                            }
+                            if (customerChoice == 8) //Read customer transactions
+                            {
                                 customerChoice = 2;
                                 continue;
                             }
                         }
-                        if (customerChoice == 7)
-                        {
-                            Console.Clear();
-                            Console.WriteLine("You payed!\nGOOD JOB");
-                            Console.ReadKey();
-                        }
-                    }
-
-                    if (customerChoice == 3)
-                    {
-
-                    }
-
-                    if (customerChoice == 4)
-                    {
-
-                    }
-
-
-
-
-
-                    if (customerChoice == 6)
-                    {
 
                     }
                     break;
+
             }
+           
             
         }
     }
 }
 
-/*
-read shoppingcartCSV(if already existing, read and continue to add in previous file)
-add to shoppingcartCSV
-if in shoppingcart mode:
-Do you want to exit or continue to checkout?
-1. Checkout - add to customerReceiptCSV
-2. Remove line
-3. Exit
-
-  admit purchase, transfer items from shoppingcartCSV to transactionsCSV
-add individual timestamp for transactionsCSV
-save shoppingcartCSV add userName
-able to read yourCustomerReceiptCSV 
-
-
-(EXAMPEL)
-äpple 2:- köpt 5/10 2023.
-<list>
-add customerName to purchase
-Benny Ahlin, äpple 2:- 5/10
-possibility to search Benny Ahlin transactions
-Admin possibility to search - Benny Ahlin transactions
-Admin possibility to search - All transactions
-
-
-
-Övrigt:
-Varje transaktion ska innehålla produkter som köpts, totalsumma, tid och datum.
-Använd textfiler för att läsa in initialdata och för att spara transaktionsloggar samt inloggningsinformation.
-
-Päron 5:-
-Apelsin 2:-
-Öl 25:-
-chips
-vodka
-ölkorv
-
-totalt pris: 32:-
-(date) + (timestamp) || Date&Timestamp
-
-
-*/
 

@@ -1,7 +1,6 @@
 ﻿using WebShop1;
 
 int menuChoice = 0;
-Customer.CustomerLogin();
 while (true)
 {
 
