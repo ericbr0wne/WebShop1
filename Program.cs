@@ -1,7 +1,10 @@
 ﻿using WebShop1;
 
 int menuChoice = 0;
-         
+
+Receipt.TotalCost();
+
+
 while (true)
 {
 
