@@ -59,9 +59,7 @@ while (true)
         switch (Console.ReadLine())
         {
             case "1":
-                //go to login class
-                //login.login
-                Console.WriteLine("login");
+                Login.Loginfunction();
                 break;
 
             case "2":
