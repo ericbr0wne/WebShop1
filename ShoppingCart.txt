@@ -1,4 +1,3 @@
-Cider,25
 Bärs,12
-Chips,25
+Bärs,12
 Äpple,15
