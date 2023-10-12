@@ -3,12 +3,13 @@ using System.IO;
 
 namespace WebShop1;
 
-public class ShoppingCart
+public class ShoppingCart : Login
 {
     public static void ReadCart() //Reads cart + calculate and show total cost
     {
-        Console.Clear();
 
+
+        Console.Clear();
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
@@ -36,6 +37,9 @@ public class ShoppingCart
     public static void AddCart() //add shoppingCartList
 
     {
+        //save from login username,password+product,price-time&date
+
+
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
@@ -60,7 +64,6 @@ public class ShoppingCart
     public static void RemoveCart()
 
     {
-        Console.Clear();
         Console.WriteLine();
         Console.WriteLine("What product do you wish to remove?");
         Console.WriteLine();
