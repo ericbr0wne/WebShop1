@@ -28,7 +28,7 @@ public class Register
             Console.Write("New Username: ");
             username = Console.ReadLine();
         }
-        while (!Regex.IsMatch(username, @"^[a-zA-Z]+$"))
+        while (!Regex.IsMatch(username, @"^[a-zA-Z-0-9]+$"))
             {
             Console.Clear();
             Console.WriteLine("Register\n");
@@ -44,7 +44,7 @@ public class Register
         Console.Write("\nNew Password (min. 6 characters & Only English letters): ");
         string password = Console.ReadLine();
 
-        while (password.Length < 6 || !Regex.IsMatch(password, @"^[a-zA-Z]+$"))
+        while (password.Length < 6 || !Regex.IsMatch(password, @"^[a-zA-Z-0-9]+$"))
         {
             Console.Clear();
             Console.WriteLine("Register\n");
