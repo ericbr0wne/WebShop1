@@ -38,7 +38,7 @@ public class Customer : Product
         int editCustomer = 0;
 
         while (editCustomer == 0)
-        Console.WriteLine("Do you want to:");
+            Console.WriteLine("Do you want to:");
         Console.WriteLine("1. Change username");
         Console.WriteLine("2. Change password");
         Console.WriteLine("3. Remove user");
@@ -66,7 +66,7 @@ public class Customer : Product
         }
         if (editCustomer == 1) //Change username
         {
-            
+
         }
 
         if (editCustomer == 2) //Change password
@@ -84,7 +84,7 @@ public class Customer : Product
 
     public static void CustomerLogin()
     {
-        
+
 
         Dictionary<string, int> product = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../product.txt");
@@ -92,12 +92,11 @@ public class Customer : Product
 
         while (CustomerCheck)
         {
-            //Console.Clear();
-            Console.WriteLine("Hello customer\n");
+            Console.Clear();
             Console.WriteLine("Please choose from below:\n");
             Console.WriteLine("1. Browse products");
             Console.WriteLine("2. Check your shoppingcart");
-            Console.WriteLine("3. Check your transactions");
+            Console.WriteLine("3. Check your finished transactions");
             Console.WriteLine("4. Logout");
 
 
@@ -132,24 +131,39 @@ public class Customer : Product
 
                     if (customerChoice == 1) // read in product list
                     {
+                        Console.Clear();
+                        NrAndReadProductList();
+                        ShoppingCart.AddCart();
+
+                        bool addCustCart = true;
+                        while (addCustCart)
+                        {
                             Console.Clear();
-                            Product.NrAndReadProductList();
-                            ShoppingCart.AddCart();
-                        while (customerChoice != 5)
-                        { 
-                            Console.WriteLine("What do you want to do");
-                            Console.WriteLine("1. Add more producs to cart");
-                            Console.WriteLine("2. Checkout to your shopping cart\n");
+                            Console.WriteLine("You added a product to your list");
+                            Console.WriteLine("What do you want to do now?\n");
+                            Console.WriteLine("1. Open your shopping cart");
+                            Console.WriteLine("2. Add more producs to your cart");
+                            Console.WriteLine("3. Remove product(s) from your cart");
+                            Console.WriteLine("4. Return to customer menu");
+
                             customerInput = Console.ReadLine();
                             switch (customerInput)
                             {
-
                                 case "1":
-                                    customerChoice = 1; // add product to cart
+                                    ShoppingCart.ReadCart();
+                                    Console.ReadKey();
                                     continue;
                                 case "2":
-                                    customerChoice = 2;
-                                    break;
+                                    ShoppingCart.ReadCart();
+                                    ShoppingCart.AddCart();
+                                    continue;
+                                case "3":
+                                    ShoppingCart.ReadCart();
+                                    ShoppingCart.RemoveCart();
+                                    continue;
+                                case "4":
+                                    addCustCart = false;
+                                    continue;
                                 default:
                                     Console.Clear();
                                     Console.WriteLine("No valid option, Try again.");
@@ -163,9 +177,11 @@ public class Customer : Product
                         while (customerChoice == 2)
                         {
                             ShoppingCart.ReadCart();
+                            Console.WriteLine();
                             Console.WriteLine("What do you want to do?");
-                            Console.WriteLine("1. Do you want to pay");
-                            Console.WriteLine("2. Do you want to remove products");
+                            Console.WriteLine("1. Do you want to checkout");
+                            Console.WriteLine("2. Do you want to add products");
+                            Console.WriteLine("3. Do you want to remove products");
                             customerInput = Console.ReadLine();
                             switch (customerInput)
                             {
@@ -180,7 +196,7 @@ public class Customer : Product
                                     Console.WriteLine("No valid option, Try again.\n");
                                     break;
 
-                            
+
                             }
                             if (customerChoice == 8)
                             {
@@ -190,11 +206,11 @@ public class Customer : Product
                             }
                         }
                         if (customerChoice == 7)
-                            {
+                        {
                             Console.Clear();
                             Console.WriteLine("You payed!\nGOOD JOB");
                             Console.ReadKey();
-                            }
+                        }
                     }
 
                     if (customerChoice == 3)
@@ -207,9 +223,9 @@ public class Customer : Product
 
                     }
 
-                    
 
-                    
+
+
 
                     if (customerChoice == 6)
                     {
@@ -217,51 +233,51 @@ public class Customer : Product
                     }
                     break;
             }
-        break;
+            
         }
     }
 }
 
-    /*
-    read shoppingcartCSV(if already existing, read and continue to add in previous file)
-    add to shoppingcartCSV
-    if in shoppingcart mode:
-    Do you want to exit or continue to checkout?
-    1. Checkout - add to customerReceiptCSV
-    2. Remove line
-    3. Exit
+/*
+read shoppingcartCSV(if already existing, read and continue to add in previous file)
+add to shoppingcartCSV
+if in shoppingcart mode:
+Do you want to exit or continue to checkout?
+1. Checkout - add to customerReceiptCSV
+2. Remove line
+3. Exit
 
-      admit purchase, transfer items from shoppingcartCSV to transactionsCSV
-    add individual timestamp for transactionsCSV
-    save shoppingcartCSV add userName
-    able to read yourCustomerReceiptCSV 
- 
+  admit purchase, transfer items from shoppingcartCSV to transactionsCSV
+add individual timestamp for transactionsCSV
+save shoppingcartCSV add userName
+able to read yourCustomerReceiptCSV 
 
-    (EXAMPEL)
-    äpple 2:- köpt 5/10 2023.
-    <list>
-    add customerName to purchase
-    Benny Ahlin, äpple 2:- 5/10
-    possibility to search Benny Ahlin transactions
-    Admin possibility to search - Benny Ahlin transactions
-    Admin possibility to search - All transactions
 
-    
+(EXAMPEL)
+äpple 2:- köpt 5/10 2023.
+<list>
+add customerName to purchase
+Benny Ahlin, äpple 2:- 5/10
+possibility to search Benny Ahlin transactions
+Admin possibility to search - Benny Ahlin transactions
+Admin possibility to search - All transactions
 
-    Övrigt:
+
+
+Övrigt:
 Varje transaktion ska innehålla produkter som köpts, totalsumma, tid och datum.
 Använd textfiler för att läsa in initialdata och för att spara transaktionsloggar samt inloggningsinformation.
 
-    Päron 5:-
-    Apelsin 2:-
-    Öl 25:-
-    chips
-    vodka
-    ölkorv
+Päron 5:-
+Apelsin 2:-
+Öl 25:-
+chips
+vodka
+ölkorv
 
-    totalt pris: 32:-
-    (date) + (timestamp) || Date&Timestamp
+totalt pris: 32:-
+(date) + (timestamp) || Date&Timestamp
 
 
-    */
+*/
 
