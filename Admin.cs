@@ -21,7 +21,7 @@ public class Admin : Product
 
 
 
-    public static void AdminLogin(string[] args)
+    public static void AdminLogin()
     {
         bool adminCheck = true;
 
