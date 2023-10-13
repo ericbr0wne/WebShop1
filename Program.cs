@@ -47,7 +47,7 @@ while (true)
         }
     }
   
-    if (menuChoice == 2)
+    if (menuChoice == 2) // login menu
     {
         Console.Clear();
         Console.WriteLine("Welcome to our login page.\n");
@@ -59,7 +59,8 @@ while (true)
         {
             case "1":
                 Login.Loginfunction();
-                break;
+                menuChoice = 0;
+                continue;
             case "2":
                 Login.LoginAdmin();
                 break;
@@ -73,7 +74,6 @@ while (true)
                 Console.ReadKey();
                 continue;
         }
-        menuChoice = 0;
     }
 
     if (menuChoice == 3)

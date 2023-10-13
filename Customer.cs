@@ -118,8 +118,7 @@ public class Customer : Product
                             customerChoice = 3;
                             break;
                         case "4":
-                            Console.WriteLine("Den funkar hit iallafall");
-                            customerChoice = 6;
+                            CustomerCheck = false;
                             break;
                         default:
                             Console.Clear();
