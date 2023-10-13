@@ -52,16 +52,19 @@ while (true)
         Console.Clear();
         Console.WriteLine("Welcome to our login page.\n");
         Console.WriteLine("Do you want to: ");
-        Console.WriteLine("1. Login");
-        Console.WriteLine("2. Return to main page");
+        Console.WriteLine("1. Login as Customer");
+        Console.WriteLine("2. Login as Admin");
+        Console.WriteLine("3. Return to main page");
         switch (Console.ReadLine())
         {
             case "1":
                 Login.Loginfunction();
                 menuChoice = 0;
                 continue;
-
             case "2":
+                Login.LoginAdmin();
+                break;
+            case "3":
                 menuChoice = 0;
                 continue;
             default:
