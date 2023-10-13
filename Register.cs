@@ -40,7 +40,7 @@ public class Register
             username = Console.ReadLine();
         }
 
-
+        
         Console.Write("\nNew Password (min. 6 characters & Only English letters): ");
         string password = Console.ReadLine();
 

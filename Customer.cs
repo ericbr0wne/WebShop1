@@ -133,13 +133,17 @@ public class Customer : Product
                     {
                         Console.Clear();
                         NrAndReadProductList();
+                        //menu för vill du adda till cart eller gå tillbaka till meny
                         ShoppingCart.AddCart();
+                        
 
                         bool addCustCart = true;
                         while (addCustCart)
                         {
+                            ShoppingCart.LastCart();
+                            string[] Latest = File.ReadAllLines("../../../Latest.txt");
                             Console.Clear();
-                            Console.WriteLine("You added a product to your list");
+                            Console.WriteLine("You added " + Latest[Latest.Length -1] + " to your list");
                             Console.WriteLine("What do you want to do now?\n");
                             Console.WriteLine("1. Open your shopping cart");
                             Console.WriteLine("2. Add more producs to your cart");
@@ -151,7 +155,9 @@ public class Customer : Product
                             {
                                 case "1":
                                     ShoppingCart.ReadCart();
+                                    Console.WriteLine("Press any key to go back to the menu");
                                     Console.ReadKey();
+                                    //call shopping cart menu
                                     continue;
                                 case "2":
                                     ShoppingCart.ReadCart();
@@ -191,52 +197,46 @@ public class Customer : Product
                                 case "2":
                                     customerChoice = 8;
                                     break;
+                                case "3":
+                                    customerChoice = 3;
+                                    break;
                                 default:
                                     Console.Clear();
                                     Console.WriteLine("No valid option, Try again.\n");
                                     break;
 
+                        
 
+                            }
+                            if (customerChoice == 3)
+                            {
+                                ShoppingCart.ReadCart();
+                                ShoppingCart.RemoveCart();
                             }
                             if (customerChoice == 8)
                             {
-                                ShoppingCart.RemoveCart();
-                                customerChoice = 2;
-                                continue;
+                                ShoppingCart.ReadCart();
+                                ShoppingCart.AddCart();
+                            }
+                            if (customerChoice == 7)
+                            {
+                                Console.Clear();
+                                Console.WriteLine("You payed!\nGOOD JOB");
+                                Console.ReadKey();
                             }
                         }
-                        if (customerChoice == 7)
+                        if (customerChoice == 6)
                         {
-                            Console.Clear();
-                            Console.WriteLine("You payed!\nGOOD JOB");
-                            Console.ReadKey();
+
                         }
-                    }
-
-                    if (customerChoice == 3)
-                    {
-
-                    }
-
-                    if (customerChoice == 4)
-                    {
-
-                    }
-
-
-
-
-
-                    if (customerChoice == 6)
-                    {
-
+                        break;
                     }
                     break;
             }
-            
         }
     }
 }
+
 
 /*
 read shoppingcartCSV(if already existing, read and continue to add in previous file)
@@ -281,3 +281,18 @@ totalt pris: 32:-
 
 */
 
+
+
+
+
+
+
+
+
+
+
+// Namn = username 
+//foreach(cehck if each [] has Namn)
+//then we know who is loged in and who we are suppsoed to gife transaction history to
+//txt.txt = trans history = Namn,äpple,äpple,vodka,12.20.05.10
+//add split and write it out and we have trnas history
