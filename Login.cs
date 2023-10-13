@@ -79,7 +79,11 @@ public class Login
             Console.WriteLine("Login\n");
             Console.WriteLine("Username: ");
             username = Console.ReadLine();
+
         }
+
+        string? custName = string.Empty;
+        string? custPass = string.Empty;
 
         foreach (string login in loginList)
         {
@@ -89,6 +93,9 @@ public class Login
                 Console.Clear();
                 Console.WriteLine("Login\n");
                 Console.WriteLine("Welcome " + username);
+                custName = username;
+                custPass = password;
+                Customer.CustomerLogin();
                 break;
             }
             else
@@ -98,6 +105,19 @@ public class Login
                 Console.WriteLine("Your username or password is incorrect\n");
                 Console.WriteLine(username + " or " + password);
             }
+
         }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

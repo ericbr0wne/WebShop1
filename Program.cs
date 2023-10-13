@@ -1,9 +1,9 @@
 ﻿using WebShop1;
 
 int menuChoice = 0;
-         
 while (true)
 {
+
     if (menuChoice == 0)
     {
         Console.Clear();
@@ -40,7 +40,6 @@ while (true)
             default:
                 Console.Clear();
                 Console.WriteLine("You didn't pick a valid option.");
-                Console.WriteLine("Please choose 1, 2 or 3.");
                 Console.WriteLine("Please press enter to continue!");
                 Console.ReadKey();
                 Console.Clear();
@@ -70,7 +69,6 @@ while (true)
             default:
                 Console.Clear();
                 Console.WriteLine("You didn't pick a valid option.");
-                Console.WriteLine("Please choose 1, 2 or 3.");
                 Console.WriteLine("Please press enter to continue!");
                 Console.ReadKey();
                 continue;
@@ -98,7 +96,6 @@ while (true)
             default:
                 Console.Clear();
                 Console.WriteLine("You didn't pick a valid option.");
-                Console.WriteLine("Please choose 1, 2, 3 or 4.");
                 Console.WriteLine("Please press enter to continue!");
                 Console.ReadKey();
                 continue;

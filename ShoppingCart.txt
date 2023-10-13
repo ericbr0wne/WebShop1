@@ -1,4 +1,5 @@
 Cider,25
 Bärs,12
-Chips,25
 Äpple,15
+Chips,25
+Vodka,45
