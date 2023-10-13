@@ -20,6 +20,7 @@ public class Login
         string username = Console.ReadLine();
         Console.Write("\nPassword: ");
         string password = Console.ReadLine();
+        Return.ReturnToHeadMenu();
 
         while (username.Length == 0)
         {
