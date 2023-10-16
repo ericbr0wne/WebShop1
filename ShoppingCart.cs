@@ -109,8 +109,8 @@ public class ShoppingCart : Login
         Console.WriteLine();
 
         {
-            List<string> cartList = File.ReadAllLines("../../../TempCart.txt").ToList(); //To be able to remove from list
-            string[] shoppingCartList = File.ReadAllLines("../../../TempCart.txt"); //To be able to count
+            List<string> cartList = File.ReadAllLines("../../../ShoppingCart.txt").ToList(); //To be able to remove from list
+            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt"); //To be able to count
 
             Console.WriteLine();
             string? input = Console.ReadLine();
@@ -121,12 +121,11 @@ public class ShoppingCart : Login
                 usernamepass = usepass;
             }
 
-
-            for (int i = 0; i <= shoppingCartList.Length; i++)
+            
+            for (int i = 0; i < shoppingCartList.Length; i++)
             {
                 if (input != null)
                 {
-                    cartList.RemoveAt(i - 1);
                 }
             }
         }
@@ -178,8 +177,6 @@ public class ShoppingCart : Login
                 int.TryParse(prodSplit[1], out int price);
                 cartSum += price;
                 File.AppendAllText("../../../Receipt.txt", prodAndPrice + "_");
-                //line.Remove(0);
-
 
             }
             else if (!line.Contains(usernamepass))

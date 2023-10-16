@@ -10,6 +10,17 @@ namespace WebShop1;
 
 public class Login
 {
+
+    //if login == admin.txt
+    //admin
+
+    //else if login == customer.txt
+    //customer
+
+    //else Sorry we could not find you, Please register or try again.
+    //main menu
+
+
     public static void LoginAdmin()
     {
         Console.Clear();
@@ -95,9 +106,6 @@ public class Login
                 Console.WriteLine("Welcome " + username);
                 custName = username;
                 custPass = password;
-                Console.WriteLine(custName);
-                Console.WriteLine(custPass);
-                Console.ReadKey();
                 Customer.CustomerLogin();
                
                 break;
