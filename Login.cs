@@ -58,7 +58,7 @@ public class Login
         }
 
     }
-    public static void Loginfunction()
+    public static void LoginCustomer()
     {
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
@@ -95,7 +95,11 @@ public class Login
                 Console.WriteLine("Welcome " + username);
                 custName = username;
                 custPass = password;
+                Console.WriteLine(custName);
+                Console.WriteLine(custPass);
+                Console.ReadKey();
                 Customer.CustomerLogin();
+               
                 break;
             }
             else

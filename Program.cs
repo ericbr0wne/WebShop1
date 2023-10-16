@@ -58,7 +58,7 @@ while (true)
         switch (Console.ReadLine())
         {
             case "1":
-                Login.Loginfunction();
+                Login.LoginCustomer();
                 menuChoice = 0;
                 continue;
             case "2":
