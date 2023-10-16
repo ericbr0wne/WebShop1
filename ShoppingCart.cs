@@ -102,7 +102,6 @@ public class ShoppingCart : Login
     public static void RemoveCart()
 
     {
-
         Console.Clear();
         ReadCart();
 
@@ -132,8 +131,26 @@ public class ShoppingCart : Login
                 }
             }
         }
+
+    }
+    public static void LastCart() //Reads cart + calculate and show total cost
+    {
+
+        Dictionary<string, int> cartList = new Dictionary<string, int>();
+        string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
+        List<string> list = new List<string>();
+        list.Clear();
+        foreach (string line in shoppingCartList)
+        {
+            string[] splitLine = line.Split(",");
+            list.Add(splitLine[0]);
+        File.WriteAllLines("../../../Latest.txt", list);
+        }
+
+
     }
 }
+
 
 
 

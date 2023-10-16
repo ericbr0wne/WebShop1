@@ -1,5 +1,12 @@
+Bärs,12
+Äpple,15
+Äpple,15
+Äpple,15
+Äpple,15
+Äpple,15
 Cider,25
 Bärs,12
 Äpple,15
 Chips,25
 Vodka,45
+Bärs,12
