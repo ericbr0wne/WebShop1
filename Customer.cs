@@ -81,7 +81,7 @@ public class Customer : Product
 
 
     }
-   
+
     public static void CustomerLogin()
     {
 
@@ -124,7 +124,7 @@ public class Customer : Product
                             Console.Clear();
                             Console.WriteLine("No valid option, Try again.\n");
                             break;
-                           
+
                     }
                     if (customerChoice == 6)
                     {
@@ -132,13 +132,13 @@ public class Customer : Product
                     }
 
 
-                        if (customerChoice == 1) // read in product list
+                    if (customerChoice == 1) // read in product list
                     {
                         Console.Clear();
                         NrAndReadProductList();
                         //menu för vill du adda till cart eller gå tillbaka till meny
                         ShoppingCart.AddCart();
-                        
+
 
                         bool addCustCart = true;
                         while (addCustCart)
@@ -146,7 +146,7 @@ public class Customer : Product
                             ShoppingCart.LastCart();
                             string[] Latest = File.ReadAllLines("../../../Latest.txt");
                             Console.Clear();
-                            Console.WriteLine("You added " + Latest[Latest.Length -1] + " to your list");
+                            Console.WriteLine("You added " + Latest[Latest.Length - 1] + " to your list");
                             Console.WriteLine("What do you want to do now?\n");
                             Console.WriteLine("1. Open your shopping cart");
                             Console.WriteLine("2. Add more producs to your cart");
@@ -215,7 +215,7 @@ public class Customer : Product
                                     Console.WriteLine("No valid option, Try again.\n");
                                     break;
 
-                        
+
 
                             }
 
@@ -236,9 +236,8 @@ public class Customer : Product
                                 Console.ReadKey();
                             }
                         }
-                        if (customerChoice == 6)
-                        {
-
+                    }break;
+            }break;
         }
     }
 }
