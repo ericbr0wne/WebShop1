@@ -1,7 +1,6 @@
 ﻿using WebShop1;
 
 int menuChoice = 0;
-Customer.CustomerLogin();
 while (true)
 {
 
@@ -48,20 +47,24 @@ while (true)
         }
     }
   
-    if (menuChoice == 2)
+    if (menuChoice == 2) // login menu
     {
         Console.Clear();
         Console.WriteLine("Welcome to our login page.\n");
         Console.WriteLine("Do you want to: ");
-        Console.WriteLine("1. Login");
-        Console.WriteLine("2. Return to main page");
+        Console.WriteLine("1. Login as Customer");
+        Console.WriteLine("2. Login as Admin");
+        Console.WriteLine("3. Return to main page");
         switch (Console.ReadLine())
         {
             case "1":
                 Login.Loginfunction();
-                break;
-
+                menuChoice = 0;
+                continue;
             case "2":
+                Login.LoginAdmin();
+                break;
+            case "3":
                 menuChoice = 0;
                 continue;
             default:
@@ -71,7 +74,6 @@ while (true)
                 Console.ReadKey();
                 continue;
         }
-        menuChoice = 0;
     }
 
     if (menuChoice == 3)

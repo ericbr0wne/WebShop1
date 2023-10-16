@@ -5,13 +5,19 @@ using System.Linq;
 
 namespace WebShop1;
 
-public class ShoppingCart
+public class ShoppingCart : Login
 {
     public static void ReadCart() //Reads cart + calculate and show total cost
     {
 
+
         List<string> cartList = File.ReadAllLines("../../../TempCart.txt").ToList();
         File.WriteAllText("../../../TempCart.txt", "");
+
+
+       // Console.Clear();
+       // Dictionary<string, int> cartList = new Dictionary<string, int>();
+
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
         int x = 1;
@@ -62,6 +68,9 @@ public class ShoppingCart
     public static void AddCart() //add shoppingCartList
 
     {
+        //save from login username,password+product,price-time&date
+
+
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
@@ -96,6 +105,7 @@ public class ShoppingCart
 
         Console.Clear();
         ReadCart();
+
         Console.WriteLine();
         Console.WriteLine("What product do you wish to remove?");
         Console.WriteLine();
