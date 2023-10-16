@@ -10,7 +10,6 @@ namespace WebShop1;
 
 public class Login
 {
-    
     public static void LoginCustomer()
     {
         Console.Clear();
@@ -49,9 +48,6 @@ public class Login
                 Console.WriteLine("Welcome " + username);
                 custName = username;
                 custPass = password;
-                Console.WriteLine(custName);
-                Console.WriteLine(custPass);
-                Console.ReadKey();
                 Customer.CustomerLogin();
                
                 break;
@@ -86,17 +82,5 @@ public class Login
             }
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
