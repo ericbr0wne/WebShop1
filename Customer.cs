@@ -88,15 +88,15 @@ public class Customer : Product
 
         Dictionary<string, int> product = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../product.txt");
-        bool CustomerCheck = true;
 
+        bool CustomerCheck = true;
         while (CustomerCheck)
         {
             Console.Clear();
             Console.WriteLine("Please choose from below:\n");
             Console.WriteLine("1. Browse products");
-            Console.WriteLine("2. Check your shoppingcart");
-            Console.WriteLine("3. Check your finished transactions");
+            Console.WriteLine("2. Open your shoppingcart");
+            Console.WriteLine("3. Transaction history");
             Console.WriteLine("4. Logout");
 
 
@@ -126,11 +126,7 @@ public class Customer : Product
                             break;
 
                     }
-                    if (customerChoice == 6)
-                    {
-                        break;
-                    }
-
+                  
 
                     if (customerChoice == 1) // read in product list
                     {
@@ -151,7 +147,8 @@ public class Customer : Product
                             Console.WriteLine("1. Open your shopping cart");
                             Console.WriteLine("2. Add more producs to your cart");
                             Console.WriteLine("3. Remove product(s) from your cart");
-                            Console.WriteLine("4. Return to customer menu");
+                            Console.WriteLine("4. Do you want to checkout");
+                            Console.WriteLine("5. Return to customer menu");
 
                             customerInput = Console.ReadLine();
                             switch (customerInput)
@@ -171,6 +168,10 @@ public class Customer : Product
                                     ShoppingCart.RemoveCart();
                                     continue;
                                 case "4":
+                                    ShoppingCart.CheckoutCart();
+                                    customerChoice = 0;
+                                    break;
+                                case "5":
                                     addCustCart = false;
                                     continue;
                                 default:
@@ -196,7 +197,8 @@ public class Customer : Product
                             switch (customerInput)
                             {
                                 case "1":
-                                    customerChoice = 7;
+                                    ShoppingCart.CheckoutCart();
+                                    customerChoice = 0;
                                     break;
                                 case "2":
                                     ShoppingCart.ReadCart();
@@ -214,30 +216,10 @@ public class Customer : Product
                                     Console.Clear();
                                     Console.WriteLine("No valid option, Try again.\n");
                                     break;
-
-
-
-                            }
-
-                            if (customerChoice == 3)
-                            {
-                                ShoppingCart.ReadCart();
-                                ShoppingCart.RemoveCart();
-                            }
-                            if (customerChoice == 8)
-                            {
-                                ShoppingCart.ReadCart();
-                                ShoppingCart.AddCart();
-                            }
-                            if (customerChoice == 7)
-                            {
-                                Console.Clear();
-                                Console.WriteLine("You payed!\nGOOD JOB");
-                                Console.ReadKey();
                             }
                         }
                     }break;
-            }break;
+            }
         }
     }
 }

@@ -15,13 +15,13 @@ public class ShoppingCart : Login
         File.WriteAllText("../../../TempCart.txt", "");
 
 
-       // Console.Clear();
-       // Dictionary<string, int> cartList = new Dictionary<string, int>();
+        // Console.Clear();
+        // Dictionary<string, int> cartList = new Dictionary<string, int>();
 
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
         int x = 1;
-        string[] loginList = File.ReadAllLines("../../../Login.txt");
+        string[] loginList = File.ReadAllLines("../../../customer.txt");
         string usernamepass = string.Empty;
         foreach (string usepass in loginList)
         {
@@ -70,7 +70,6 @@ public class ShoppingCart : Login
     {
         //save from login username,password+product,price-time&date
 
-
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
@@ -82,7 +81,7 @@ public class ShoppingCart : Login
         Console.WriteLine();
         string? input = Console.ReadLine();
         Console.Clear();
-        string[] loginList = File.ReadAllLines("../../../Login.txt");
+        string[] loginList = File.ReadAllLines("../../../customer.txt");
         string usernamepass = string.Empty;
         foreach (string usepass in loginList)
         {
@@ -93,7 +92,7 @@ public class ShoppingCart : Login
         {
             if (input == i.ToString())
             {
-                File.AppendAllText("../../../ShoppingCart.txt", usernamepass);
+                File.AppendAllText("../../../ShoppingCart.txt", usernamepass + "+");
                 File.AppendAllText("../../../ShoppingCart.txt", productList[i - 1] + Environment.NewLine);
             }
         }
@@ -115,7 +114,7 @@ public class ShoppingCart : Login
 
             Console.WriteLine();
             string? input = Console.ReadLine();
-            string[] loginList = File.ReadAllLines("../../../Login.txt");
+            string[] loginList = File.ReadAllLines("../../../customer.txt");
             string usernamepass = string.Empty; //contains username and password
             foreach (string usepass in loginList)
             {
@@ -133,6 +132,8 @@ public class ShoppingCart : Login
         }
 
     }
+
+
     public static void LastCart() //Reads cart + calculate and show total cost
     {
 
@@ -142,13 +143,111 @@ public class ShoppingCart : Login
         list.Clear();
         foreach (string line in shoppingCartList)
         {
-            string[] splitLine = line.Split(",");
+            string[] splitall = line.Split("+");
+            string prod = splitall[1];
+            string[] splitLine = prod.Split(",");
             list.Add(splitLine[0]);
-        File.WriteAllLines("../../../Latest.txt", list);
+            File.WriteAllLines("../../../Latest.txt", list);
         }
+
+    }
+
+    public static void CheckoutCart()
+    {
+
+        Console.Clear();
+        Dictionary<string, int> cartList = new Dictionary<string, int>();
+        string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
+        int cartSum = 0;
+        string[] loginList = File.ReadAllLines("../../../customer.txt");
+        string usernamepass = string.Empty;
+        foreach (string usepass in loginList)
+        {
+            usernamepass = usepass;
+        }
+
+        File.AppendAllText("../../../Receipt.txt", usernamepass + "+");
+        foreach (var line in shoppingCartList)
+        {
+            if (line.Contains(usernamepass))
+            {
+                string[] splitLine = line.Split("+"); //usernamepassword =splitline[0] + produktpris = splitline[1]
+                string prodAndPrice = splitLine[1];
+
+                string[] prodSplit = prodAndPrice.Split(",");
+                int.TryParse(prodSplit[1], out int price);
+                cartSum += price;
+                File.AppendAllText("../../../Receipt.txt", prodAndPrice + "_");
+                //line.Remove(0);
+
+
+            }
+            else if (!line.Contains(usernamepass))
+            {
+                continue;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine();
+                Console.WriteLine("Your cart is empty!");
+                Console.WriteLine();
+            }
+        }
+        File.AppendAllText("../../../Receipt.txt", "/"+ cartSum + "*");
+        File.AppendAllText("../../../Receipt.txt", DateTime.Now.ToString() + Environment.NewLine);
+
+        Console.WriteLine("You have now completed your transaction, thank you for shopping.");
+        Console.WriteLine("Press enter to continue.");
+        Console.ReadKey();
+
+        /*
+        Checkout -
+        alla filer från shoppingcart.txt med username+password
+        print username + password ONCE                                                 Benny,hejhej+        
+        foreach item in shoppingcart.txt med username+password add productname         pear
+                                                                                       apple   
+                                                                                       banana
+        
+        add total cost                                                                 total cost: 15:-
+        
+        When finished add date and time stamp                                          2023-10-16
+        
+        space for new                                                                  **********************************
+
+        Checkout -
+        alla filer från shoppingcart.txt med username+password
+        print username + password ONCE                                                 Jonny,hejhej+        
+        foreach item in shoppingcart.txt med username+password add productname         pear
+                                                                                       apple   
+                                                                                       banana
+        
+        add total cost                                                                 total cost: 15:-
+        
+        When finished add date and time stamp                                          2023-10-16
+        
+        space for new                                                                  **********************************
+
+
+        Jonny,hejhej+pear,apple,banana-15,2023-10-16
+
+
+
+        display reciept username + prods + timestamp
+
+
+
+        */
+
+
+
+
+
 
 
     }
+
+
 }
 
 
