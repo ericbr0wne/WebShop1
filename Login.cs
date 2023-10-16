@@ -46,41 +46,37 @@ public class Login
                 Console.Clear();
                 Console.WriteLine("Login\n");
                 Console.WriteLine("Welcome " + username);
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadKey();
                 custName = username;
                 custPass = password;
                 Customer.CustomerLogin();
-               
-                break;
             }
-            if (user[0] != username && user[1] != password)
+            else if (user[0] != username && user[1] != password)
             {
                 foreach (string admin in adminList)
                 {
                     List<string> adminuser = new List<string>(admin.Split(","));
                     if (adminuser[0] == username && adminuser[1] == password)
                     {
-                        Console.Clear();
-                        Console.WriteLine("Login\n");
-                        Console.WriteLine("Welcome " + username);
                         custName = username;
                         custPass = password;
-                        Console.WriteLine(custName);
-                        Console.WriteLine(custPass);
-                        Console.ReadKey();
                         Admin.AdminLogin();
+                    }
+                    else
+                    {
 
+                        Console.Clear();
+                        Console.WriteLine("Login\n");
+                        Console.WriteLine("Your username or password is incorrect\n");
+                        Console.WriteLine("Press enter to continue.");
+                        Console.ReadKey();
                         break;
                     }
                 }
+                break;
             }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Login\n");
-                Console.WriteLine("Your username or password is incorrect\n");
-                Console.WriteLine(username + " or " + password);
-            }
-
         }
     }
 }
+

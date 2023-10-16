@@ -18,7 +18,7 @@ public class Admin : Product
         while (adminCheck)
         {
             Console.Clear();
-            Console.WriteLine("*********** Admin ***********\n");
+            Console.WriteLine("*********** Welcome Admin ***********\n");
             Console.WriteLine("1. Add product");
             Console.WriteLine("2. Remove product");
             Console.WriteLine("3. Check costumer information");
@@ -53,7 +53,6 @@ public class Admin : Product
                             adminChoice = 6;
                             break;
                         case "7":
-                            adminChoice = 7;
                             adminCheck = false;
                             break;
                         default:
@@ -87,12 +86,13 @@ public class Admin : Product
 
                     if (adminChoice == 4) //("4. Edit costumer information");
                     {
-                        string? adminEditCustomer = Console.ReadLine();
                         int editCustomer = 0;
                         Console.WriteLine("Do you want to:");
                         Console.WriteLine("1. Change username");
                         Console.WriteLine("2. Change password");
-                        Console.WriteLine("3. Remove customer");
+                        Console.WriteLine("3. Remove customer"); 
+                        //IF TIME
+                        //Includes to remove the customer shoppingcart.
                         switch (Console.ReadLine())
                         {
                             case "1":
@@ -101,13 +101,12 @@ public class Admin : Product
                             case "2":
                                 editCustomer = 2;
                                 continue;
-                            case "3":
-                                editCustomer = 3;
-                                break;
+                          //  case "3":
+                            //    editCustomer = 3;
+                            //    break;
                             default:
                                 Console.Clear();
                                 Console.WriteLine("You didn't pick a valid option.");
-                                Console.WriteLine("Please choose 1, 2 or 3.");
                                 Console.WriteLine("Please press enter to continue!");
                                 Console.ReadKey();
                                 Console.Clear();
@@ -116,35 +115,26 @@ public class Admin : Product
                     }
 
 
-
-
                     if (adminChoice == 5) //("5. Check costumer shoppingcart");
                     {
+                        //ELLEN
+                        //if user == input
+                        ShoppingCart.ReadCart();
                         continue;
                     }
 
                     if (adminChoice == 6) //("6. Check costumer transactions");
                     {
 
-
-
                         continue;
                     }
-
-                    if (adminChoice == 7) //("7. Logout\n");
-                    {
-
-
-
-                        continue;
-                    }
-
-
-
-
 
                     break;
 
+            }
+            if (adminCheck == false)
+            {
+                break;
             }
         }
     }

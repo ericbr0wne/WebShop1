@@ -1,6 +1,7 @@
-﻿Äpple,15
-Bärs,12
+Äpple,15
 Cider,25
 Choklad,20
 Chips,25
 Vodka,45
+Juice,25
+Vatten,18

@@ -5,7 +5,6 @@ Jonny,hejhej+Vodka,45
 Benny,hejhej+Bärs,12
 Benny,hejhej+Choklad,20
 Benny,hejhej+Chips,25
-Benny,hejhej+Chips,25
-Benny,hejhej+Chips,25
 Benny,hejhej+Bärs,12
 Benny,hejhej+Choklad,20
+Benny,hejhej+Vodka,45

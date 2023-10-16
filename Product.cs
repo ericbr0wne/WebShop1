@@ -33,6 +33,8 @@ public class Product
 
     public static void AddProduct() //add Product to list
     {
+
+        //Possibility to exit if you dont want to add any products
         Console.Clear();
         Console.WriteLine("This is the product list:");
         NrAndReadProductList(); //read productList
@@ -46,6 +48,7 @@ public class Product
         string? price = Console.ReadLine();     //Prodprice
         string? prodAndPrice = product + "," + price;   //Temp hold PN "," and PP
         Console.WriteLine();
+        Console.Clear();
         Console.WriteLine("*********** NEW PRODUCT ***********");
         Console.WriteLine("Product: " + product + "\nPrice: " + price + ":- ");
         Console.WriteLine("\nPress enter to continue");
@@ -57,6 +60,7 @@ public class Product
     public static void RemoveProduct()
 
     {
+        //Possibility to exit if you dont want to remove any products
         Console.Clear();
         Console.WriteLine("This is the product list:");
         NrAndReadProductList();

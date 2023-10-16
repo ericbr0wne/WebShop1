@@ -55,6 +55,8 @@ while (true)
         if(true)
         {
             Login.LoginCustomer();
+            menuChoice = 0;
+            continue;
         }
                 
                 
