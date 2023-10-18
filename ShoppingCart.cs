@@ -12,27 +12,22 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
         List<string> cartList = File.ReadAllLines("../../../TempCart.txt").ToList();
         File.WriteAllText("../../../TempCart.txt", "");
 
-
-        // Console.Clear();
-        // Dictionary<string, int> cartList = new Dictionary<string, int>();
-
+        string loggedIn = string.Empty;
+        
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
         int x = 1;
-        string[] loginList = File.ReadAllLines("../../../customer.txt");
-        string usernamepass = string.Empty;
-        foreach (string usepass in loginList)
-        {
-            usernamepass = usepass;
-        }
+        List<string> tempLogin = File.ReadAllLines("../../../LoggedIn.txt").ToList();
+        loggedIn = tempLogin[0];
+
         Console.WriteLine("This is in your cart: ");
         Console.WriteLine();
 
         foreach (var line in shoppingCartList)
         {
-            if (line.Contains(usernamepass))
+            if (line.Contains( loggedIn))
             {
-                string[] splitLine = line.Split("+"); //usernamepassword =splitline[0] + produktpris = splitline[1]
+                string[] splitLine = line.Split("+"); //loggedInword =splitline[0] + produktpris = splitline[1]
                 string prodAndPrice = splitLine[1];
 
                 string[] prodSplit = splitLine[1].Split(",");
@@ -42,7 +37,7 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
                 x++;
                 File.AppendAllText("../../../TempCart.txt", prodSplit[0] + Environment.NewLine);
             }
-            else if (!line.Contains(usernamepass))
+            else if (!line.Contains(loggedIn))
             {
                 continue;
             }
@@ -80,17 +75,17 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
         string? input = Console.ReadLine().ToLower();
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
-        string usernamepass = string.Empty;
+        string loggedIn = string.Empty;
         foreach (string usepass in loginList)
         {
-            usernamepass = usepass;
+            loggedIn = usepass;
         }
 
         for (int i = 0; i <= productList.Length; i++)
         {
             if (input == i.ToString())
             {
-                File.AppendAllText("../../../ShoppingCart.txt", usernamepass + "+");
+                File.AppendAllText("../../../ShoppingCart.txt", loggedIn + "+");
                 File.AppendAllText("../../../ShoppingCart.txt", productList[i - 1] + Environment.NewLine);
                 ShoppingCart.LastCart();
                 string[] Latest = File.ReadAllLines("../../../Latest.txt"); 
@@ -122,10 +117,10 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
             Console.WriteLine();
             string? input = Console.ReadLine();
             string[] loginList = File.ReadAllLines("../../../customer.txt");
-            string usernamepass = string.Empty; //contains username and password
+            string loggedIn = string.Empty; //contains username and password
             foreach (string usepass in loginList)
             {
-                usernamepass = usepass;
+                loggedIn = usepass;
             }
 
             
@@ -166,18 +161,18 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
         string[] loginList = File.ReadAllLines("../../../customer.txt");
-        string usernamepass = string.Empty;
+        string loggedIn = string.Empty;
         foreach (string usepass in loginList)
         {
-            usernamepass = usepass;
+            loggedIn = usepass;
         }
 
-        File.AppendAllText("../../../Receipt.txt", usernamepass + "+");
+        File.AppendAllText("../../../Receipt.txt", loggedIn + "+");
         foreach (var line in shoppingCartList)
         {
-            if (line.Contains(usernamepass))
+            if (line.Contains(loggedIn))
             {
-                string[] splitLine = line.Split("+"); //usernamepassword =splitline[0] + produktpris = splitline[1]
+                string[] splitLine = line.Split("+"); //loggedInword =splitline[0] + produktpris = splitline[1]
                 string prodAndPrice = splitLine[1];
 
                 string[] prodSplit = prodAndPrice.Split(",");
@@ -186,7 +181,7 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
                 File.AppendAllText("../../../Receipt.txt", prodAndPrice + "_");
 
             }
-            else if (!line.Contains(usernamepass))
+            else if (!line.Contains(loggedIn))
             {
                 continue;
             }
