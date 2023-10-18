@@ -21,7 +21,7 @@ public class Product
         for (int y = 0; y < productList.Length; y++)
         {
             string[] splitLine = productList[y].Split(",");
-            if (int.TryParse(splitLine[1], out int price))
+            if (int.TryParse(splitLine[1], out int price)) //do we really need to Tryparse??
             {
 
                 cartList.Add(splitLine[0], price);

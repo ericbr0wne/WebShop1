@@ -10,6 +10,9 @@ namespace WebShop1;
 
 public class Register
 {
+
+    //Används Register.txt? Ska vi delete'a? 
+
     public static void RegisterCustomer()
     {
         Console.Clear();
@@ -66,7 +69,7 @@ public class Register
 
 
         File.AppendAllText("../../../customer.txt", $"{username},{password}" + Environment.NewLine);
-        string[] registerList = File.ReadAllLines("../../../customer.txt");
+        string[] registerList = File.ReadAllLines("../../../customer.txt");  //onödig?
     }
 
 }

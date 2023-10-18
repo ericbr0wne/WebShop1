@@ -10,7 +10,7 @@ namespace WebShop1;
 
 public class Login
 {
-    public static void LoginCustomer()
+    public static void LoginCustomerAdmin()  //Byta namn till Customer & Admin? 
     {
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
@@ -50,7 +50,7 @@ public class Login
                 Console.ReadKey();
                 custName = username;
                 custPass = password;
-                Customer.CustomerLogin();
+                Customer.CustomerLoginMenu();
             }
             else if (user[0] != username && user[1] != password)
             {
