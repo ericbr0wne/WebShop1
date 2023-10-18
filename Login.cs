@@ -15,68 +15,83 @@ public class Login
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
         string[] adminList = File.ReadAllLines("../../../Admin.txt");
+        List<string> cartList = File.ReadAllLines("../../../LoggedIn.txt").ToList();
 
-        Console.WriteLine("Login\n");
         Console.Write("Username: ");
-        string username = Console.ReadLine();
+        string? username = Console.ReadLine(); //Benny
         Console.Write("\nPassword: ");
-        string password = Console.ReadLine();
+        string? password = Console.ReadLine(); //hejhej
 
         while (username.Length == 0)
         {
             Console.Clear();
-            Console.WriteLine("Login\n");
             Console.WriteLine("You can NOT leave this blank, Press anywhere if you understand");
             Console.ReadKey();
             Console.Clear();
-            Console.WriteLine("Login\n");
             Console.WriteLine("Username: ");
             username = Console.ReadLine();
 
         }
-
+        bool userfail = true;
+        bool adminfail = true;
         string? custName = string.Empty;
         string? custPass = string.Empty;
-
-        foreach (string login in loginList)
+        bool loginAccepted = true;
+        if (loginAccepted)
         {
-            List<string> user = new List<string>(login.Split(","));
-            if (user[0] == username && user[1] == password)
-            {
-                Console.Clear();
-                Console.WriteLine("Login\n");
-                Console.WriteLine("Welcome " + username);
-                Console.WriteLine("Press enter to continue.");
-                Console.ReadKey();
-                custName = username;
-                custPass = password;
-                Customer.CustomerLogin();
-            }
-            else if (user[0] != username && user[1] != password)
-            {
-                foreach (string admin in adminList)
-                {
-                    List<string> adminuser = new List<string>(admin.Split(","));
-                    if (adminuser[0] == username && adminuser[1] == password)
-                    {
-                        custName = username;
-                        custPass = password;
-                        Admin.AdminLogin();
-                    }
-                    else
-                    {
 
-                        Console.Clear();
-                        Console.WriteLine("Login\n");
-                        Console.WriteLine("Your username or password is incorrect\n");
-                        Console.WriteLine("Press enter to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
+            foreach (string login in loginList)
+            {
+                List<string> user = new List<string>(login.Split(","));
+                if (user[0] == username && user[1] == password)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Welcome " + username);
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadKey();
+                    File.WriteAllText("../../../LoggedIn.txt", username+","+password);
+
+                    Customer.CustomerLogin();
+                    userfail = false;
+                    break;
                 }
-                break;
+                else if (user[0] != username && user[1] != password)
+                {
+                    continue;
+                }
+
             }
         }
+        if (loginAccepted)
+        {
+
+            foreach (string adminLine in adminList)
+            {
+                List<string> adminCheck = new List<string>(adminLine.Split(","));
+                if (adminCheck[0] == username && adminCheck[1] == password)
+                {
+                    File.WriteAllText("../../../LoggedIn.txt", username + "," + password);
+                    Admin.AdminLogin();
+                    adminfail = false;
+                    break;
+                }
+                else if (adminCheck[0] != username && adminCheck[1] != password)
+                {
+                    continue;
+                }
+
+            }
+            if (userfail && adminfail)
+            {
+                Console.Clear();
+                Console.WriteLine("Your username or password is incorrect\n");
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadKey();
+            }
+        }
+
+
     }
 }
+
 
