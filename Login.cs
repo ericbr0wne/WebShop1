@@ -19,36 +19,16 @@ public class Login
 
         List<string> cartList = File.ReadAllLines("../../../LoggedIn.txt").ToList();
 
+        Console.WriteLine("**********LOGIN************");
+        Console.WriteLine("Leave empty to exit");
+        Console.WriteLine();
         Console.Write("Username: ");
         string? username = Console.ReadLine();
         Console.Write("\nPassword: ");
-        string? password = Console.ReadLine(); 
+        string? password = Console.ReadLine();
 
-        while (username.Length == 0)
-        {
-            Console.Clear();
-            Console.WriteLine("You can NOT leave this blank, Press anywhere if you understand");
-            Console.ReadKey();
-            Console.Clear();
-            Console.WriteLine("Username: ");
-            username = Console.ReadLine();
-
-        }
         bool userfail = true;
         bool adminfail = true;
-
-        Console.WriteLine("**********LOGIN************");
-        Console.WriteLine("Leave empty to exit");
-        Console.Write("Write your Username:");
-        string username = Console.ReadLine();
-
-        Console.WriteLine();
-        Console.Write("Write your Password: ");
-        string password = Console.ReadLine();
-
-
-
-
         string? custName = string.Empty;
         string? custPass = string.Empty;
         bool loginAccepted = true;
@@ -65,9 +45,9 @@ public class Login
                     Console.WriteLine("Welcome " + username);
                     Console.WriteLine("Press enter to continue.");
                     Console.ReadKey();
-                    File.WriteAllText("../../../LoggedIn.txt", username+","+password);
+                    File.WriteAllText("../../../LoggedIn.txt", username + "," + password);
 
-                    Customer.CustomerLogin();
+                    Customer.CustomerLoginMenu();
                     userfail = false;
                     break;
                 }
@@ -75,16 +55,6 @@ public class Login
                 {
                     continue;
                 }
-
-
-                Console.Clear();
-                Console.WriteLine("Login\n");
-                Console.WriteLine("Welcome " + username);
-                Console.WriteLine("Press enter to continue.");
-                Console.ReadKey();
-                custName = username;
-                custPass = password;
-                Customer.CustomerLoginMenu();
 
             }
         }
@@ -105,24 +75,6 @@ public class Login
                 else if (adminCheck[0] != username && adminCheck[1] != password)
                 {
                     continue;
-
-                    List<string> adminuser = new List<string>(admin.Split(","));
-                    if (adminuser[0] == username && adminuser[1] == password)
-                    {
-                        custName = username;
-                        custPass = password;
-                        Admin.AdminLogin();
-                    }
-                    else
-                    {
-
-                        Console.Clear();
-                        Console.WriteLine("Your username or password is incorrect\n");
-                        Console.WriteLine("Press enter to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
-
                 }
 
             }

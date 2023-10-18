@@ -90,9 +90,6 @@ public class Admin : Product //why do we have Inheritence from Product?
                         Console.WriteLine("Do you want to:");
                         Console.WriteLine("1. Change username");
                         Console.WriteLine("2. Change password");
-                        Console.WriteLine("3. Remove customer"); 
-                        //IF TIME
-                        //Includes to remove the customer shoppingcart.
                         switch (Console.ReadLine())
                         {
                             case "1":
@@ -101,9 +98,6 @@ public class Admin : Product //why do we have Inheritence from Product?
                             case "2":
                                 editCustomer = 2;
                                 continue;
-                          //  case "3":
-                            //    editCustomer = 3;
-                            //    break;
                             default:
                                 Console.Clear();
                                 Console.WriteLine("You didn't pick a valid option.");

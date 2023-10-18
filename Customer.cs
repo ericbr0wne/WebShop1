@@ -103,6 +103,7 @@ public class Customer : Product  //why do we have Inheritence from Product?
 
             int customerChoice = 0;
             string? customerInput = Console.ReadLine();
+            Console.Clear();
             switch (customerChoice)
             {
                 case 0:
@@ -230,9 +231,3 @@ public class Customer : Product  //why do we have Inheritence from Product?
         }
     }
 }
-
-// Namn = username 
-//foreach(cehck if each [] has Namn)
-//then we know who is loged in and who we are suppsoed to gife transaction history to
-//txt.txt = trans history = Namn,äpple,äpple,vodka,12.20.05.10
-//add split and write it out and we have trnas history

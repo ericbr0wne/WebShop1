@@ -9,3 +9,4 @@ Benny,hejhej+Bärs,12
 Benny,hejhej+Choklad,20
 Benny,hejhej+Vodka,45
 Benny,hejhej+Äpple,15
+Benny,hejhej+Äpple,15
