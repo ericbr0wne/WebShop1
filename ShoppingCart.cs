@@ -5,12 +5,10 @@ using System.Linq;
 
 namespace WebShop1;
 
-public class ShoppingCart : Login
+public class ShoppingCart : Login //why do we have Inheritence from Login?
 {
     public static void ReadCart() //Reads cart + calculate and show total cost
     {
-
-
         List<string> cartList = File.ReadAllLines("../../../TempCart.txt").ToList();
         File.WriteAllText("../../../TempCart.txt", "");
 
@@ -60,12 +58,11 @@ public class ShoppingCart : Login
     }
 
 
-    public static void AddCart() //add shoppingCartList
+    public static void AddCart() //innehåller? 
 
     {
         //save from login username,password+product,price-time&date
 
-        Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
 
@@ -74,7 +71,8 @@ public class ShoppingCart : Login
         Console.WriteLine();
         Console.WriteLine("Choose the number of product to add to Shopping Cart: ");
         Console.WriteLine();
-        string? input = Console.ReadLine();
+        Console.WriteLine("Type exit to return to customer menu.");
+        string? input = Console.ReadLine().ToLower();
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
         string loggedIn = string.Empty;
@@ -89,11 +87,20 @@ public class ShoppingCart : Login
             {
                 File.AppendAllText("../../../ShoppingCart.txt", loggedIn + "+");
                 File.AppendAllText("../../../ShoppingCart.txt", productList[i - 1] + Environment.NewLine);
+                ShoppingCart.LastCart();
+                string[] Latest = File.ReadAllLines("../../../Latest.txt"); 
+                Console.Clear();
+                Console.WriteLine("You added " + Latest[Latest.Length - 1] + " to your list");
+                Console.WriteLine();
+            }
+            else if (input == "exit")
+            {
+                continue;
             }
         }
     }
 
-    public static void RemoveCart()
+    public static void RemoveCart()  //innehåller? Kan vi förklara de två listorna?
 
     {
         Console.Clear();
@@ -128,7 +135,7 @@ public class ShoppingCart : Login
     }
 
 
-    public static void LastCart() //Reads cart + calculate and show total cost
+    public static void LastCart() //Vad gör denna? 
     {
 
         Dictionary<string, int> cartList = new Dictionary<string, int>();
@@ -146,7 +153,7 @@ public class ShoppingCart : Login
 
     }
 
-    public static void CheckoutCart()
+    public static void CheckoutCart()  //innehåller? Varje transaktion ska innehålla produkter som köpts, totalsumma, tid och datum.
     {
 
         Console.Clear();
