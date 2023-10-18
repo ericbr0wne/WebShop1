@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,30 +11,21 @@ namespace WebShop1;
 
 public class Login
 {
-    public static void LoginCustomerAdmin()  //Byta namn till Customer & Admin? 
+    public static void LoginCustomerAdmin()
     {
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
         string[] adminList = File.ReadAllLines("../../../Admin.txt");
-
-        Console.WriteLine("Login\n");
-        Console.Write("Username: ");
+        Console.WriteLine("**********LOGIN************");
+        Console.WriteLine("Leave blank to exit");
+        Console.Write("Write your Username:");
         string username = Console.ReadLine();
-        Console.Write("\nPassword: ");
+
+        Console.WriteLine();
+        Console.Write("Write your Password: ");
         string password = Console.ReadLine();
 
-        while (username.Length == 0)
-        {
-            Console.Clear();
-            Console.WriteLine("Login\n");
-            Console.WriteLine("You can NOT leave this blank, Press anywhere if you understand");
-            Console.ReadKey();
-            Console.Clear();
-            Console.WriteLine("Login\n");
-            Console.WriteLine("Username: ");
-            username = Console.ReadLine();
 
-        }
 
         string? custName = string.Empty;
         string? custPass = string.Empty;
@@ -67,7 +59,6 @@ public class Login
                     {
 
                         Console.Clear();
-                        Console.WriteLine("Login\n");
                         Console.WriteLine("Your username or password is incorrect\n");
                         Console.WriteLine("Press enter to continue.");
                         Console.ReadKey();

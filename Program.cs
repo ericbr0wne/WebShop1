@@ -22,7 +22,7 @@ while (true)
     if (menuChoice == 1) //Product menu
     {
         Console.Clear();
-        Console.WriteLine("This is our available products: ");
+        Console.WriteLine("These are the available products: ");
         Product.NrAndReadProductList();
         Console.WriteLine();
         Console.WriteLine("If you want to add products to your cart \nPlease login first");
@@ -122,8 +122,7 @@ while (true)
                     break;
                 default:
                     Console.Clear();
-                    Console.WriteLine("You didn't pick a valid option.");
-                    Console.WriteLine("Please choose 1, 2, 3 or 4.");
+                    Console.WriteLine("You didn't pick a valid option.");        
                     Console.WriteLine("Please press enter to continue!");
                     Console.ReadKey();
                     Console.Clear();

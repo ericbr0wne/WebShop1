@@ -139,10 +139,7 @@ public class Customer : Product  //why do we have Inheritence from Product?
                         bool addCustCart = true;   //Samma som == customerChoice 2? Ska vi kombinera detta med den eller låta vara?
                         while (addCustCart)  
                         {
-                            ShoppingCart.LastCart();
-                            string[] Latest = File.ReadAllLines("../../../Latest.txt"); //Varför denna lista?
-                            Console.Clear();
-                            Console.WriteLine("You added " + Latest[Latest.Length - 1] + " to your list");
+                           
                             Console.WriteLine("What do you want to do now?\n");
                             Console.WriteLine("1. Open your shopping cart");
                             Console.WriteLine("2. Add more producs to your cart");

@@ -68,7 +68,6 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
     {
         //save from login username,password+product,price-time&date
 
-        Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
 
@@ -77,7 +76,8 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
         Console.WriteLine();
         Console.WriteLine("Choose the number of product to add to Shopping Cart: ");
         Console.WriteLine();
-        string? input = Console.ReadLine();
+        Console.WriteLine("Type exit to return to customer menu.");
+        string? input = Console.ReadLine().ToLower();
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
         string usernamepass = string.Empty;
@@ -92,6 +92,15 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
             {
                 File.AppendAllText("../../../ShoppingCart.txt", usernamepass + "+");
                 File.AppendAllText("../../../ShoppingCart.txt", productList[i - 1] + Environment.NewLine);
+                ShoppingCart.LastCart();
+                string[] Latest = File.ReadAllLines("../../../Latest.txt"); 
+                Console.Clear();
+                Console.WriteLine("You added " + Latest[Latest.Length - 1] + " to your list");
+                Console.WriteLine();
+            }
+            else if (input == "exit")
+            {
+                continue;
             }
         }
     }
