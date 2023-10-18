@@ -7,65 +7,66 @@ while (true)
     if (menuChoice == 0)
     {
         Console.Clear();
-        Console.WriteLine("Welcome to WebShop1\n");
-        Console.WriteLine("Please choose from below:\n");
+        Console.WriteLine("=============================================");
+        Console.WriteLine("              Welcome to WebShop1");
+        Console.WriteLine("=============================================");
+        Console.WriteLine("Please choose from the options below:");
+        Console.WriteLine("=============================================");
         Console.WriteLine("1. Products");
         Console.WriteLine("2. Login");
         Console.WriteLine("3. Register");
         Console.WriteLine("4. Exit");
+        Console.WriteLine("=============================================");
     }
 
     if (menuChoice == 1) //Product menu
     {
         Console.Clear();
-        Console.WriteLine("This is our avaiable products: ");
+        Console.WriteLine("This is our available products: ");
         Product.NrAndReadProductList();
         Console.WriteLine();
         Console.WriteLine("If you want to add products to your cart \nPlease login first");
         Console.WriteLine("1. Login");
-        Console.WriteLine("2. Return to main page");
-        Console.WriteLine("3. Exit webshop");
+        Console.WriteLine("2. Return to Main menu");
+        Console.WriteLine("3. Exit WebShop1");
 
         switch (Console.ReadLine())
         {
             case "1":
-                menuChoice = 2;
+                menuChoice = 2; //Login menu
                 continue;
             case "2":
-                menuChoice = 0;
+                menuChoice = 0; //Main menu
                 continue;
             case "3":
-                menuChoice = 4;
+                menuChoice = 4; //Exit
                 break;
             default:
                 Console.Clear();
                 Console.WriteLine("You didn't pick a valid option.");
-                Console.WriteLine("Please press enter to continue!");
+                Console.WriteLine("Please press enter to continue!"); 
                 Console.ReadKey();
                 Console.Clear();
                 break;
         }
     }
   
-    if (menuChoice == 2) // login menu
+    if (menuChoice == 2) //Login menu
     {
         Console.Clear();
         Console.WriteLine("Welcome to our login page.\n");
         
         if(true)
         {
-            Login.LoginCustomer();
-            menuChoice = 0;
-            continue;
+            Login.LoginCustomerAdmin();
+            menuChoice = 0; //Main menu if costumer/admin login is incorrect 
+            continue;  //continue back to the while loop start
         }
-                
-                
-            
-            
+        
         
     }
 
-    if (menuChoice == 3)
+    if (menuChoice == 3)  //Register menu
     {
         Console.Clear();
         Console.WriteLine("Welcome to our register page.\n");
@@ -91,10 +92,8 @@ while (true)
         }
     }
 
-        
 
-
-    if (menuChoice == 4)
+    if (menuChoice == 4) //Exit WebShop1
     {
         Console.Clear();
         Console.WriteLine();

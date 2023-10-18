@@ -9,18 +9,29 @@ namespace WebShop1;
 public class Receipt
 {
 
-    //transaction
-    //listofPurchasedProducts
+    //transaction == CheckoutCart()? 
+
+
+
+    //listofPurchasedProducts == 
+
+
+
+
+    //timeDateStamp  //CHeckoutCart()
+
+
+
 
     //totalCost
-    public static void TotalCost() //calculate and show total cost
+    public static void TotalCost() //Onödig? Totalcosts finns i CheckoutCart() //calculate and show total cost
     {
         
 
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
-        int x = 1;
+        int x = 1; //why x = 1 and not 0?
 
         foreach (var line in shoppingCartList)
         {
@@ -39,7 +50,6 @@ public class Receipt
         Console.WriteLine("Total sum: " + cartSum + ":-");
     }
 
-    //timeDateStamp
 
 
     public static void ThreeWaySplit()

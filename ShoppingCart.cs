@@ -5,12 +5,10 @@ using System.Linq;
 
 namespace WebShop1;
 
-public class ShoppingCart : Login
+public class ShoppingCart : Login //why do we have Inheritence from Login?
 {
     public static void ReadCart() //Reads cart + calculate and show total cost
     {
-
-
         List<string> cartList = File.ReadAllLines("../../../TempCart.txt").ToList();
         File.WriteAllText("../../../TempCart.txt", "");
 
@@ -65,7 +63,7 @@ public class ShoppingCart : Login
     }
 
 
-    public static void AddCart() //add shoppingCartList
+    public static void AddCart() //innehåller? 
 
     {
         //save from login username,password+product,price-time&date
@@ -98,7 +96,7 @@ public class ShoppingCart : Login
         }
     }
 
-    public static void RemoveCart()
+    public static void RemoveCart()  //innehåller? Kan vi förklara de två listorna?
 
     {
         Console.Clear();
@@ -133,7 +131,7 @@ public class ShoppingCart : Login
     }
 
 
-    public static void LastCart() //Reads cart + calculate and show total cost
+    public static void LastCart() //Vad gör denna? 
     {
 
         Dictionary<string, int> cartList = new Dictionary<string, int>();
@@ -151,7 +149,7 @@ public class ShoppingCart : Login
 
     }
 
-    public static void CheckoutCart()
+    public static void CheckoutCart()  //innehåller? Varje transaktion ska innehålla produkter som köpts, totalsumma, tid och datum.
     {
 
         Console.Clear();

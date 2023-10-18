@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebShop1;
 
-public class Admin : Product
+public class Admin : Product //why do we have Inheritence from Product?
 {
     public static void AdminLogin()
     {
@@ -23,8 +23,8 @@ public class Admin : Product
             Console.WriteLine("2. Remove product");
             Console.WriteLine("3. Check costumer information");
             Console.WriteLine("4. Edit costumer information");
-            Console.WriteLine("5. Check costumer shoppingcart");
-            Console.WriteLine("6. Check costumer transactions");
+            Console.WriteLine("5. Browse costumer shoppingcart");
+            Console.WriteLine("6. Browse costumer transactions");
             Console.WriteLine("7. Logout\n");
 
             int adminChoice = 0;
@@ -79,7 +79,7 @@ public class Admin : Product
 
                     if (adminChoice == 3) //("3. Check costumer information");
                     {
-                        Customer.readAllInfo();
+                        Customer.ReadCustInfo();
                         adminChoice = 0;
                         continue;
                     }

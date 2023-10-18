@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace WebShop1;
 
-public class Customer : Product
+public class Customer : Product  //why do we have Inheritence from Product? 
 {
-    public static void readAllInfo()
+    public static void ReadCustInfo()
     {
 
-        Console.WriteLine("*********** USER INFORMATION ***********");
         Console.Clear();
+        Console.WriteLine("*********** USER INFORMATION ***********");
         Dictionary<string, int> customerList = new Dictionary<string, int>();
         string[] custList = File.ReadAllLines("../../../Customer.txt");
         int x = 1;
@@ -82,7 +82,7 @@ public class Customer : Product
 
     }
 
-    public static void CustomerLogin()
+    public static void CustomerLoginMenu()
     {
 
 
@@ -95,7 +95,7 @@ public class Customer : Product
             Console.Clear();
             Console.WriteLine("Please choose from below:\n");
             Console.WriteLine("1. Browse products");
-            Console.WriteLine("2. Open your shoppingcart");
+            Console.WriteLine("2. Shopping cart");
             Console.WriteLine("3. Transaction history");
             Console.WriteLine("4. Logout");
 
@@ -136,11 +136,11 @@ public class Customer : Product
                         ShoppingCart.AddCart();
 
 
-                        bool addCustCart = true;
-                        while (addCustCart)
+                        bool addCustCart = true;   //Samma som == customerChoice 2? Ska vi kombinera detta med den eller låta vara?
+                        while (addCustCart)  
                         {
                             ShoppingCart.LastCart();
-                            string[] Latest = File.ReadAllLines("../../../Latest.txt");
+                            string[] Latest = File.ReadAllLines("../../../Latest.txt"); //Varför denna lista?
                             Console.Clear();
                             Console.WriteLine("You added " + Latest[Latest.Length - 1] + " to your list");
                             Console.WriteLine("What do you want to do now?\n");
