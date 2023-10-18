@@ -126,7 +126,7 @@ public class Customer : Product
                             break;
 
                     }
-                  
+
 
                     if (customerChoice == 1) // read in product list
                     {
@@ -218,7 +218,17 @@ public class Customer : Product
                                     break;
                             }
                         }
-                    }break;
+
+
+
+
+                    }
+                    if (customerChoice == 3)
+                    {
+
+                        Receipt.ReadReceipt();
+                    }
+                    break;
             }
         }
     }
