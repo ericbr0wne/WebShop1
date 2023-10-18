@@ -115,12 +115,69 @@ public class Admin : Product
                     }
 
 
-                    if (adminChoice == 5) //("5. Check costumer shoppingcart");
+                    if (adminChoice == 5) //Check costumer shoppingcart
                     {
-                        //ELLEN
-                        //if user == input
-                        ShoppingCart.ReadCart();
-                        continue;
+                        
+                        Console.Clear();
+                        // Customer.readAllInfo(); (extra?)
+                        Console.WriteLine("Customer username: ");
+                        string CustomerName = Console.ReadLine();
+
+                        string CustomerCheck = File.ReadAllText("../../../customer.txt");
+
+                        if (CustomerCheck.Contains(CustomerName)) //check if customer is in customer text file
+                        {
+                            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
+                            int cartSum = 0;
+                            int x = 1;
+                            Console.Clear();
+                            Console.WriteLine("This is in " + CustomerName + "'s cart: ");
+                            Console.WriteLine();
+
+                            foreach (var line in shoppingCartList)
+                            {
+                                if (line.Contains(CustomerName))
+                                {
+                                    string[] splitLine = line.Split("+"); //usernamepassword =splitline[0] + produktpris = splitline[1]
+                                    string prodAndPrice = splitLine[1];
+
+                                    string[] prodSplit = splitLine[1].Split(",");
+                                    int.TryParse(prodSplit[1], out int price);
+                                    cartSum += price;
+                                    Console.WriteLine(x + ". " + prodSplit[0]);
+                                    x++;
+                  
+                                }
+                                else if (!line.Contains(CustomerName))
+                                {
+                                    continue;
+                                }
+                                else
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine();
+                                    Console.WriteLine("The cart is empty!");
+                                    Console.WriteLine();
+                                }
+                            }
+                            Console.WriteLine();
+                            Console.WriteLine("Total sum: " + cartSum + ":-");
+
+                            Console.WriteLine();
+                            Console.WriteLine("Press any key to go back to Admin menu");
+                            Console.ReadKey();
+                            continue;
+                        }
+
+                        else 
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("This user does not exist \n");
+                            Console.Write("Press any key to continue");
+                            Console.ReadKey();
+                            continue;
+                        }
+                        
                     }
 
                     if (adminChoice == 6) //("6. Check costumer transactions");
@@ -132,13 +189,12 @@ public class Admin : Product
                     break;
 
             }
+                    break;
             if (adminCheck == false)
             {
                 break;
             }
         }
     }
-
-
 
 }
