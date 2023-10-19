@@ -9,6 +9,10 @@ namespace WebShop1;
 
 public class Admin : Product //why do we have Inheritence from Product?
 {
+    private enum Choice
+        {
+        //enum för menyval
+        }
     public static void AdminLogin()
     {
 
@@ -66,8 +70,6 @@ public class Admin : Product //why do we have Inheritence from Product?
                     if (adminChoice == 1) //add product to list
                     {
                         AddProduct();
-                        adminChoice = 0;
-                        continue;
                     };
 
                     if (adminChoice == 2) //remove product from list

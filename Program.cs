@@ -1,10 +1,10 @@
 ﻿using WebShop1;
 
-int menuChoice = 0;
+Menu menu = Menu.Main;
 while (true)
 {
 
-    if (menuChoice == 0)
+    if (menu.Equals(Menu.Main))
     {
         Console.Clear();
         Console.WriteLine("=============================================");
@@ -19,7 +19,7 @@ while (true)
         Console.WriteLine("=============================================");
     }
 
-    if (menuChoice == 1) //Product menu
+    if (menu.Equals(Menu.Products)) //Product menu
     {
         Console.Clear();
         Console.WriteLine("These are the available products: ");
@@ -33,40 +33,40 @@ while (true)
         switch (Console.ReadLine())
         {
             case "1":
-                menuChoice = 2; //Login menu
+                menu = Menu.Login; //Login menu
                 continue;
             case "2":
-                menuChoice = 0; //Main menu
+                menu = Menu.Main; //Main menu
                 continue;
             case "3":
-                menuChoice = 4; //Exit
-                break;
+                menu = Menu.Exit;
+                    break;
             default:
                 Console.Clear();
                 Console.WriteLine("You didn't pick a valid option.");
-                Console.WriteLine("Please press enter to continue!"); 
+                Console.WriteLine("Please press enter to continue!");
                 Console.ReadKey();
                 Console.Clear();
                 break;
         }
     }
-  
-    if (menuChoice == 2) //Login menu
+
+    if (menu.Equals(Menu.Login)) //Login menu
     {
         Console.Clear();
         Console.WriteLine("Welcome to our login page.\n");
-        
-        if(true)
+
+        if (true)
         {
             Login.LoginCustomerAdmin();
-            menuChoice = 0; //Main menu if costumer/admin login is incorrect 
+            menu = Menu.Main; //Main menu if costumer/admin login is incorrect 
             continue;  //continue back to the while loop start
         }
-        
-        
+
+
     }
 
-    if (menuChoice == 3)  //Register menu
+    if (menu.Equals(Menu.Register))  //Register menu
     {
         Console.Clear();
         Console.WriteLine("Welcome to our register page.\n");
@@ -78,10 +78,10 @@ while (true)
             case "1":
                 //go to register class
                 Register.RegisterCustomer();
-                menuChoice = 2;
+                menu = Menu.Register;
                 continue;
             case "2":
-                menuChoice = 0;
+                menu = Menu.Main;
                 continue;
             default:
                 Console.Clear();
@@ -93,7 +93,7 @@ while (true)
     }
 
 
-    if (menuChoice == 4) //Exit WebShop1
+    if (menu.Equals(Menu.Exit)) //Exit WebShop1
     {
         Console.Clear();
         Console.WriteLine();
@@ -103,32 +103,30 @@ while (true)
 
     string? input = Console.ReadLine();
 
-    switch (menuChoice)
+    if (menu.Equals(Menu.Main))
     {
-        case 0:
-            switch (input)
-            {
-                case "1":
-                    menuChoice = 1;
-                    break;
-                case "2":
-                    menuChoice = 2;
-                    break;
-                case "3":
-                    menuChoice = 3;
-                    break;
-                case "4":
-                    menuChoice = 4;
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("You didn't pick a valid option.");        
-                    Console.WriteLine("Please press enter to continue!");
-                    Console.ReadKey();
-                    Console.Clear();
-                    break;
-            }
-            break;
+        switch (input)
+        {
+            case "1":
+                menu = Menu.Products;
+                break;
+            case "2":
+                menu = Menu.Login;
+                break;
+            case "3":
+                menu = Menu.Register;
+                break;
+            case "4":
+                menu = Menu.Exit;
+                break;
+            default:
+                Console.Clear();
+                Console.WriteLine("You didn't pick a valid option.");
+                Console.WriteLine("Please press enter to continue!");
+                Console.ReadKey();
+                Console.Clear();
+                break;
+        }
     }
 }
 
