@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace WebShop1;
 
-public class Admin : Product //why do we have Inheritence from Product?
+public class Admin : Product
 {
     private enum Choice
-        {
-        //enum för menyval
-        }
+    {
+        
+    }
     public static void AdminLogin()
     {
 
@@ -67,26 +67,26 @@ public class Admin : Product //why do we have Inheritence from Product?
 
 
 
-                    if (adminChoice == 1) //add product to list
+                    if (adminChoice == 1)
                     {
                         AddProduct();
                     };
 
-                    if (adminChoice == 2) //remove product from list
+                    if (adminChoice == 2)
                     {
                         RemoveProduct();
                         adminChoice = 0;
                         continue;
                     }
 
-                    if (adminChoice == 3) //("3. Check costumer information");
+                    if (adminChoice == 3)
                     {
                         Customer.ReadCustInfo();
                         adminChoice = 0;
                         continue;
                     }
 
-                    if (adminChoice == 4) //("4. Edit costumer information");
+                    if (adminChoice == 4)
                     {
                         int editCustomer = 0;
                         Console.WriteLine("Do you want to:");
@@ -111,17 +111,17 @@ public class Admin : Product //why do we have Inheritence from Product?
                     }
 
 
-                    if (adminChoice == 5) //Check costumer shoppingcart
+                    if (adminChoice == 5)
                     {
-                        
+
                         Console.Clear();
-                        // Customer.readAllInfo(); (extra?)
+
                         Console.WriteLine("Customer username: ");
                         string CustomerName = Console.ReadLine();
 
                         string CustomerCheck = File.ReadAllText("../../../customer.txt");
 
-                        if (CustomerCheck.Contains(CustomerName)) //check if customer is in customer text file
+                        if (CustomerCheck.Contains(CustomerName))
                         {
                             string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
                             int cartSum = 0;
@@ -134,7 +134,7 @@ public class Admin : Product //why do we have Inheritence from Product?
                             {
                                 if (line.Contains(CustomerName))
                                 {
-                                    string[] splitLine = line.Split("+"); //usernamepassword =splitline[0] + produktpris = splitline[1]
+                                    string[] splitLine = line.Split("+");
                                     string prodAndPrice = splitLine[1];
 
                                     string[] prodSplit = splitLine[1].Split(",");
@@ -142,7 +142,7 @@ public class Admin : Product //why do we have Inheritence from Product?
                                     cartSum += price;
                                     Console.WriteLine(x + ". " + prodSplit[0]);
                                     x++;
-                  
+
                                 }
                                 else if (!line.Contains(CustomerName))
                                 {
@@ -165,7 +165,7 @@ public class Admin : Product //why do we have Inheritence from Product?
                             continue;
                         }
 
-                        else 
+                        else
                         {
                             Console.WriteLine();
                             Console.WriteLine("This user does not exist \n");
@@ -173,10 +173,10 @@ public class Admin : Product //why do we have Inheritence from Product?
                             Console.ReadKey();
                             continue;
                         }
-                        
+
                     }
 
-                    if (adminChoice == 6) //("6. Check costumer transactions");
+                    if (adminChoice == 6)
                     {
 
                         continue;
@@ -185,7 +185,7 @@ public class Admin : Product //why do we have Inheritence from Product?
                     break;
 
             }
-                    break;
+
             if (adminCheck == false)
             {
                 break;
