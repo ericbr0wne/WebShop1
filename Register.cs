@@ -11,9 +11,8 @@ namespace WebShop1;
 public class Register
 {
 
-    //Används Register.txt? Ska vi delete'a? 
 
-    public static void RegisterCustomer()
+    public static void Customer()
     {
         Console.Clear();
         Console.WriteLine("Register\n");
