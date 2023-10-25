@@ -91,7 +91,7 @@ public class Admin
 
                     if (admin.Equals(Choice.CheckCustomer))
                     {
-                        Customer.ReadCustInfo();
+                        Customer.ReadInfo();
                         admin = Choice.Main;
                     }
 
