@@ -47,6 +47,8 @@ public class Product
         Console.WriteLine("Product: " + product + "\nPrice: " + price + ":- ");
         Console.WriteLine("\nPress enter to continue");
         File.AppendAllText("../../../Product.txt", prodAndPrice + Environment.NewLine);
+        Catalogue();
+        Console.WriteLine("\nPress enter to continue");
         Console.ReadKey();
 
     }

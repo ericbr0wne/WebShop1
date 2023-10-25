@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Channels;
@@ -10,8 +11,8 @@ namespace WebShop1;
 public class Admin
 {
     private enum Choice
-    { 
-        Menu,
+    {
+        Main,
         AddProduct,
         RemoveProduct,
         CheckCustomer,
@@ -23,10 +24,8 @@ public class Admin
     public static void AdminLogin()
     {
 
-        Dictionary<string, int> product = new Dictionary<string, int>();
-        Choice admin = Choice.Menu;
-        bool adminCheck = true;
-        while (adminCheck)
+        Choice admin = Choice.Main;
+        while (true)
         {
             if (admin.Equals(Menu.Main))
             {
@@ -42,62 +41,64 @@ public class Admin
             }
 
 
-            int adminChoice = 0;
-            string? adminInput = Console.ReadLine();
-            switch (adminChoice)
+            switch (admin = Choice.Main)
             {
                 case 0:
+                    string? adminInput = Console.ReadLine();
                     switch (adminInput)
                     {
                         case "1":
                             admin = Choice.AddProduct;
                             break;
                         case "2":
-                            adminChoice = 2;
+                            admin = Choice.RemoveProduct;
                             break;
                         case "3":
-                            adminChoice = 3;
+                            admin = Choice.CheckCustomer;
                             break;
                         case "4":
-                            adminChoice = 4;
+                            admin = Choice.EditCustomer;
                             break;
                         case "5":
-                            adminChoice = 5;
+                            admin = Choice.CustomerCart;
                             break;
                         case "6":
-                            adminChoice = 6;
+                            admin = Choice.Transactions;
                             break;
                         case "7":
-                            adminCheck = false;
+                            admin = Choice.Exit;
                             break;
                         default:
                             Console.Clear();
                             Console.WriteLine("No valid option, Try again.\n");
                             break;
                     }
+                   
 
 
-
-                    if (adminChoice == 1)
+                    if (admin.Equals(Choice.AddProduct))
                     {
                         Product.AddProduct();
+                        admin = Choice.Main;
+                        continue;
+
                     };
 
-                    if (adminChoice == 2)
+                    if (admin.Equals(Choice.RemoveProduct))
                     {
                         Product.RemoveProduct();
-                        adminChoice = 0;
+                        admin = Choice.Main;
                         continue;
                     }
 
-                    if (adminChoice == 3)
+                    if (admin.Equals(Choice.CheckCustomer))
                     {
                         Customer.ReadCustInfo();
-                        adminChoice = 0;
+                        admin = Choice.Main;
                         continue;
                     }
 
-                    if (adminChoice == 4)
+                    if (admin.Equals(Choice.EditCustomer))
                     {
                         int editCustomer = 0;
                         Console.Clear();
@@ -125,7 +126,7 @@ public class Admin
                     }
 
 
-                    if (adminChoice == 5)
+                    if (admin.Equals(Choice.CustomerCart))
                     {
 
                         Console.Clear();
@@ -190,17 +191,17 @@ public class Admin
 
                     }
 
-                    if (adminChoice == 6)
+                    if (admin.Equals(Choice.Transactions))
                     {
 
                         continue;
                     }
-
                     break;
+
 
             }
 
-            if (adminCheck == false)
+            if (admin.Equals(Choice.Exit))
             {
                 break;
             }
