@@ -27,7 +27,7 @@ public class Admin
         Choice admin = Choice.Main;
         while (true)
         {
-            if (admin.Equals(Menu.Main))
+            if (admin.Equals(Choice.Main))
             {
                 Console.Clear();
                 Console.WriteLine("*********** Welcome Admin ***********\n");
@@ -71,6 +71,7 @@ public class Admin
                         default:
                             Console.Clear();
                             Console.WriteLine("No valid option, Try again.\n");
+                            Console.ReadKey();
                             break;
                     }
                    
@@ -80,27 +81,22 @@ public class Admin
                     {
                         Product.AddProduct();
                         admin = Choice.Main;
-                        continue;
-
-                    };
+                    }
 
                     if (admin.Equals(Choice.RemoveProduct))
                     {
                         Product.RemoveProduct();
                         admin = Choice.Main;
-                        continue;
                     }
 
                     if (admin.Equals(Choice.CheckCustomer))
                     {
                         Customer.ReadCustInfo();
                         admin = Choice.Main;
-                        continue;
                     }
 
                     if (admin.Equals(Choice.EditCustomer))
                     {
-                        int editCustomer = 0;
                         Console.Clear();
                         Console.WriteLine("Do you want to:");
                         Console.WriteLine("1. Change username");
@@ -109,12 +105,12 @@ public class Admin
                         {
                             case "1":
                                 Customer.ChangeUsername();
-                                editCustomer = 1;
-                                continue;
+                                admin = Choice.Main;
+                                break;
                             case "2":
                                 Customer.ChangePassword();
-                                editCustomer = 2;
-                                continue;
+                                admin = Choice.Main;
+                                break;
                             default:
                                 Console.Clear();
                                 Console.WriteLine("You didn't pick a valid option.");
@@ -128,70 +124,8 @@ public class Admin
 
                     if (admin.Equals(Choice.CustomerCart))
                     {
-
-                        Console.Clear();
-
-                        Console.WriteLine("Customer username: ");
-                        string CustomerName = Console.ReadLine();
-
-                        string CustomerCheck = File.ReadAllText("../../../customer.txt");
-
-                        if (CustomerCheck.Contains(CustomerName))
-                        {
-                            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
-                            int cartSum = 0;
-                            int x = 1;
-                            Console.Clear();
-                            Console.WriteLine("This is in " + CustomerName + "'s cart: ");
-                            Console.WriteLine();
-
-                            foreach (var line in shoppingCartList)
-                            {
-                                string[] user = line.Split(",");
-
-                                if (user[0] == CustomerName)
-                                {
-                                    string[] splitLine = line.Split("+");
-                                    string prodAndPrice = splitLine[1];
-
-                                    string[] prodSplit = splitLine[1].Split(",");
-                                    int.TryParse(prodSplit[1], out int price);
-                                    cartSum += price;
-                                    Console.WriteLine(x + ". " + prodSplit[0]);
-                                    x++;
-
-                                }
-                                else if (user[0] != CustomerName)
-                                {
-                                    continue;
-
-                                }
-                                else
-                                {
-                                    Console.Clear();
-                                    Console.WriteLine();
-                                    Console.WriteLine("The cart is empty!");
-                                    Console.WriteLine();
-                                }
-                            }
-                            Console.WriteLine();
-                            Console.WriteLine("Total sum: " + cartSum + ":-");
-
-                            Console.WriteLine();
-                            Console.WriteLine("Press any key to go back to Admin menu");
-                            Console.ReadKey();
-                            continue;
-                        }
-
-                        else
-                        {
-                            Console.WriteLine();
-                            Console.WriteLine("This user does not exist \n");
-                            Console.Write("Press any key to continue");
-                            Console.ReadKey();
-                            continue;
-                        }
-
+                        ShoppingCart.AdminCheck();
+                        admin = Choice.Main;
                     }
 
                     if (admin.Equals(Choice.Transactions))
