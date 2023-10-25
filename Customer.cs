@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebShop1;
 
-public class Customer : Product  //why do we have Inheritence from Product? 
+public class Customer
 {
     public static void ReadCustInfo()
     {
@@ -132,7 +132,7 @@ public class Customer : Product  //why do we have Inheritence from Product?
                     if (customerChoice == 1) // read in product list
                     {
                         Console.Clear();
-                        NrAndReadProductList();
+                        Product.Catalogue();
                         //menu för vill du adda till cart eller gå tillbaka till meny
                         ShoppingCart.AddCart();
 

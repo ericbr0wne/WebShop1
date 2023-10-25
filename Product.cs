@@ -12,7 +12,7 @@ namespace WebShop1;
 
 public class Product
 {
-    public static void NrAndReadProductList() //add nr. and print productList
+    public static void Catalogue() //add nr. and print productList
     {
         string[] productList = File.ReadAllLines("../../../Product.txt");
         int x = 1;
@@ -31,7 +31,7 @@ public class Product
         //Possibility to exit if you dont want to add any products
         Console.Clear();
         Console.WriteLine("This is the product list:");
-        NrAndReadProductList(); //read productList
+        Catalogue(); //read productList
         Console.WriteLine();
         Console.WriteLine("*********** Add Product *********** ");
         Console.WriteLine();
@@ -57,7 +57,7 @@ public class Product
         //Possibility to exit if you dont want to remove any products
         Console.Clear();
         Console.WriteLine("This is the product list:");
-        NrAndReadProductList();
+        Catalogue();
         Console.WriteLine();
         Console.WriteLine("What product do you wish to remove?");
         Console.WriteLine();

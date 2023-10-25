@@ -67,7 +67,7 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
         Console.Clear();
 
         Console.WriteLine("This is the product list:");
-        Product.NrAndReadProductList(); //read productList
+        Product.Catalogue(); //read productList
         Console.WriteLine();
         Console.WriteLine("Choose the number of product to add to Shopping Cart: ");
         Console.WriteLine();

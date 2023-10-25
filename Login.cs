@@ -11,7 +11,7 @@ namespace WebShop1;
 
 public class Login
 {
-    public static void LoginCustomerAdmin()
+    public static void Page()
     {
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
