@@ -9,18 +9,29 @@ namespace WebShop1;
 public class Receipt
 {
 
-    //transaction
-    //listofPurchasedProducts
+    //transaction == CheckoutCart()? 
+
+
+
+    //listofPurchasedProducts == 
+
+
+
+
+    //timeDateStamp  //CHeckoutCart()
+
+
+
 
     //totalCost
-    public static void TotalCost() //calculate and show total cost
+    public static void TotalCost() //Onödig? Totalcosts finns i CheckoutCart() //calculate and show total cost
     {
-        
+
 
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
-        int x = 1;
+        int x = 1; //why x = 1 and not 0?
 
         foreach (var line in shoppingCartList)
         {
@@ -39,40 +50,57 @@ public class Receipt
         Console.WriteLine("Total sum: " + cartSum + ":-");
     }
 
-    //timeDateStamp
 
 
-    public static void ThreeWaySplit()
+    public static void ReadReceipt()
     {
-        Console.WriteLine("** MEGA 3WAY SPLIT **");
         Console.Clear();
-        Dictionary<string, int> customerList = new Dictionary<string, int>();
-        string[] custList = File.ReadAllLines("../../../Customer.txt");
-
-        foreach (string line in custList)
+        Console.WriteLine("Here are your receipts\n");
+        Dictionary<string, int> cartList = new Dictionary<string, int>();
+        string[] receiptList = File.ReadAllLines("../../../Receipt.txt");
+        string[] loginList = File.ReadAllLines("../../../customer.txt");
+        string usernamepass = string.Empty;
+        foreach (string usepass in loginList)
         {
-            string[] splitLineOne = line.Split("+");
-            string[] splitOne = splitLineOne[0].Split(",");
-            Console.WriteLine();
-            Console.WriteLine("User: " + splitOne[0]);
-
-            string split2 = splitLineOne[1];
-            string[] splitLineTwo = split2.Split("-");
-            string[] splitTwo = splitLineTwo[0].Split(",");
-            Console.WriteLine();
-            Console.WriteLine("prod : " + splitTwo[0] + "\nprice : " + splitTwo[1]);
-
-            string split3 = splitLineTwo[1];
-            string[] splitThree = split3.Split(",");
-            Console.WriteLine();
-            Console.WriteLine("Date: " + splitThree[0] + "\nTime: " + splitThree[1]);
-
-            Console.WriteLine("\n");
-            Console.WriteLine("Press enter to return");
-            Console.ReadKey();
-
+            usernamepass = usepass;
         }
+        foreach (var line in receiptList)
+        {
+            if (line.Contains(usernamepass))
+            {
 
+
+                string[] splitLineOne = line.Split("+");
+                string[] splitOne = splitLineOne[0].Split(",");
+                Console.WriteLine();
+                Console.WriteLine("Customer: " + splitOne[0]);
+
+                string split2 = splitLineOne[1];
+                string[] artPriceFromRest = split2.Split("/");
+                string[] splitTwo = artPriceFromRest[0].Split("_");
+                Console.WriteLine();
+
+                for (int i = 0; i < splitTwo.Length -1; i++)
+                {
+                   string[] artAndPrice = splitTwo[i].Split(",");
+                   Console.WriteLine("Prod: " + artAndPrice[0] + "\t" + artAndPrice[1] + ":-");
+                }
+
+                string split3 = artPriceFromRest[1];
+                string[] splitThree = split3.Split("*");
+                Console.WriteLine();
+                Console.WriteLine("Total price: " + splitThree[0] + "\n\nDate: " + splitThree[1]);
+
+                Console.WriteLine("\n");
+                Console.WriteLine("****************************");
+            }
+            else if (!line.Contains(usernamepass))
+            {
+                continue;
+            }
+        }
+        Console.WriteLine("Press enter to return");
+        Console.ReadKey();
     }
 
 

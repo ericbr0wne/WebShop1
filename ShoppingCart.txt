@@ -8,3 +8,9 @@ Benny,hejhej+Chips,25
 Benny,hejhej+Bärs,12
 Benny,hejhej+Choklad,20
 Benny,hejhej+Vodka,45
+Benny,hejhej+Äpple,15
+Benny,hejhej+Äpple,15
+Demo,hejhej+Choklad,20
+Demo,hejhej+Vatten,18
+Demo,hejhej+Chips,25
+Demo,hejhej+Choklad,20

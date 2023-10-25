@@ -5,36 +5,29 @@ using System.Linq;
 
 namespace WebShop1;
 
-public class ShoppingCart : Login
+public class ShoppingCart : Login //why do we have Inheritence from Login?
 {
     public static void ReadCart() //Reads cart + calculate and show total cost
     {
-
-
         List<string> cartList = File.ReadAllLines("../../../TempCart.txt").ToList();
         File.WriteAllText("../../../TempCart.txt", "");
 
-
-        // Console.Clear();
-        // Dictionary<string, int> cartList = new Dictionary<string, int>();
-
+        string loggedIn = string.Empty;
+        
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
         int x = 1;
-        string[] loginList = File.ReadAllLines("../../../customer.txt");
-        string usernamepass = string.Empty;
-        foreach (string usepass in loginList)
-        {
-            usernamepass = usepass;
-        }
+        List<string> tempLogin = File.ReadAllLines("../../../LoggedIn.txt").ToList();
+        loggedIn = tempLogin[0];
+
         Console.WriteLine("This is in your cart: ");
         Console.WriteLine();
 
         foreach (var line in shoppingCartList)
         {
-            if (line.Contains(usernamepass))
+            if (line.Contains( loggedIn))
             {
-                string[] splitLine = line.Split("+"); //usernamepassword =splitline[0] + produktpris = splitline[1]
+                string[] splitLine = line.Split("+"); //loggedInword =splitline[0] + produktpris = splitline[1]
                 string prodAndPrice = splitLine[1];
 
                 string[] prodSplit = splitLine[1].Split(",");
@@ -44,7 +37,7 @@ public class ShoppingCart : Login
                 x++;
                 File.AppendAllText("../../../TempCart.txt", prodSplit[0] + Environment.NewLine);
             }
-            else if (!line.Contains(usernamepass))
+            else if (!line.Contains(loggedIn))
             {
                 continue;
             }
@@ -65,12 +58,11 @@ public class ShoppingCart : Login
     }
 
 
-    public static void AddCart() //add shoppingCartList
+    public static void AddCart() //innehåller? 
 
     {
         //save from login username,password+product,price-time&date
 
-        Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
 
@@ -79,26 +71,36 @@ public class ShoppingCart : Login
         Console.WriteLine();
         Console.WriteLine("Choose the number of product to add to Shopping Cart: ");
         Console.WriteLine();
-        string? input = Console.ReadLine();
+        Console.WriteLine("Type exit to return to customer menu.");
+        string? input = Console.ReadLine().ToLower();
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
-        string usernamepass = string.Empty;
+        string loggedIn = string.Empty;
         foreach (string usepass in loginList)
         {
-            usernamepass = usepass;
+            loggedIn = usepass;
         }
 
         for (int i = 0; i <= productList.Length; i++)
         {
             if (input == i.ToString())
             {
-                File.AppendAllText("../../../ShoppingCart.txt", usernamepass + "+");
+                File.AppendAllText("../../../ShoppingCart.txt", loggedIn + "+");
                 File.AppendAllText("../../../ShoppingCart.txt", productList[i - 1] + Environment.NewLine);
+                ShoppingCart.LastCart();
+                string[] Latest = File.ReadAllLines("../../../Latest.txt"); 
+                Console.Clear();
+                Console.WriteLine("You added " + Latest[Latest.Length - 1] + " to your list");
+                Console.WriteLine();
+            }
+            else if (input == "exit")
+            {
+                continue;
             }
         }
     }
 
-    public static void RemoveCart()
+    public static void RemoveCart()  //innehåller? Kan vi förklara de två listorna?
 
     {
         Console.Clear();
@@ -115,10 +117,10 @@ public class ShoppingCart : Login
             Console.WriteLine();
             string? input = Console.ReadLine();
             string[] loginList = File.ReadAllLines("../../../customer.txt");
-            string usernamepass = string.Empty; //contains username and password
+            string loggedIn = string.Empty; //contains username and password
             foreach (string usepass in loginList)
             {
-                usernamepass = usepass;
+                loggedIn = usepass;
             }
 
             
@@ -133,7 +135,7 @@ public class ShoppingCart : Login
     }
 
 
-    public static void LastCart() //Reads cart + calculate and show total cost
+    public static void LastCart() //Vad gör denna? 
     {
 
         Dictionary<string, int> cartList = new Dictionary<string, int>();
@@ -151,7 +153,7 @@ public class ShoppingCart : Login
 
     }
 
-    public static void CheckoutCart()
+    public static void CheckoutCart()  //innehåller? Varje transaktion ska innehålla produkter som köpts, totalsumma, tid och datum.
     {
 
         Console.Clear();
@@ -159,18 +161,18 @@ public class ShoppingCart : Login
         string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
         int cartSum = 0;
         string[] loginList = File.ReadAllLines("../../../customer.txt");
-        string usernamepass = string.Empty;
+        string loggedIn = string.Empty;
         foreach (string usepass in loginList)
         {
-            usernamepass = usepass;
+            loggedIn = usepass;
         }
 
-        File.AppendAllText("../../../Receipt.txt", usernamepass + "+");
+        File.AppendAllText("../../../Receipt.txt", loggedIn + "+");
         foreach (var line in shoppingCartList)
         {
-            if (line.Contains(usernamepass))
+            if (line.Contains(loggedIn))
             {
-                string[] splitLine = line.Split("+"); //usernamepassword =splitline[0] + produktpris = splitline[1]
+                string[] splitLine = line.Split("+"); //loggedInword =splitline[0] + produktpris = splitline[1]
                 string prodAndPrice = splitLine[1];
 
                 string[] prodSplit = prodAndPrice.Split(",");
@@ -179,7 +181,7 @@ public class ShoppingCart : Login
                 File.AppendAllText("../../../Receipt.txt", prodAndPrice + "_");
 
             }
-            else if (!line.Contains(usernamepass))
+            else if (!line.Contains(loggedIn))
             {
                 continue;
             }
