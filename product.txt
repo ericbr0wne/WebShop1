@@ -1,4 +1,3 @@
-Äpple,15
 Cider,25
 Choklad,20
 Chips,25

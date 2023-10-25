@@ -14,6 +14,7 @@ public class CustomEdit
     {
         string[] custList = File.ReadAllLines("../../../customer.txt");
 
+        bool notCustomer = true;
         Console.Clear();
         Console.WriteLine("Edit\n");
         Console.WriteLine("Current Username: \n");
@@ -31,7 +32,7 @@ public class CustomEdit
             oldUsername = Console.ReadLine();
         }
 
-        for (int i = 0; i < custList.Length; i++)
+        for (int i = 0; i <= custList.Length -1; i++)
         {
             string line = custList[i];
             List<string> user = new List<string>(line.Split(","));
@@ -66,13 +67,18 @@ public class CustomEdit
 
                 custList[i] = newUsername + "," + user[1];
                 File.WriteAllLines("../../../customer.txt", custList);
-
+                notCustomer = false;
                 Console.Clear();
                 Console.WriteLine("You have succefully changed your username to: " + newUsername + "\nPress any key to continue\n");
                 Console.ReadKey();
                 Admin.AdminLogin();
             }
-            else
+
+            
+            
+            
+        }
+            if (notCustomer)
             {
                 Console.Clear();
                 Console.WriteLine("Edit\n");
@@ -80,14 +86,12 @@ public class CustomEdit
                 Console.WriteLine("Press enter to continue.");
                 Console.ReadKey();
             }
-            break;
-        }
     }
 
     public static void Password()
     {
         string[] custList = File.ReadAllLines("../../../customer.txt");
-
+        bool notPassword = false;
         Console.Clear();
         Console.WriteLine("Edit\n");
         Console.WriteLine("Username: \n");
@@ -107,7 +111,7 @@ public class CustomEdit
             oldPassword = Console.ReadLine();
         }
 
-        for (int i = 0; i < custList.Length; i++)
+        for (int i = 0; i <= custList.Length - 1; i++)
         {
             string line = custList[i];
             List<string> user = new List<string>(line.Split(","));
@@ -142,21 +146,21 @@ public class CustomEdit
 
                 custList[i] = user[0] + "," + newPassword;
                 File.WriteAllLines("../../../customer.txt", custList);
-
+                notPassword = true;
                 Console.Clear();
                 Console.WriteLine("You have succefully changed your username to: " + newPassword + "\nPress any key to continue\n");
                 Console.ReadKey();
                 Admin.AdminLogin();
             }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Edit\n");
-                Console.WriteLine("The username or password is incorrect\n");
-                Console.WriteLine("Press enter to continue.");
-                Console.ReadKey();
-                break;
-            }
+            
+        }
+        if (notPassword)
+        {
+            Console.Clear();
+            Console.WriteLine("Edit\n");
+            Console.WriteLine("The username or password is incorrect\n");
+            Console.WriteLine("Press enter to continue.");
+            Console.ReadKey();
         }
     }
 }

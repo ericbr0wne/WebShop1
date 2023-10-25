@@ -39,7 +39,7 @@ while (true)
                 menu = Menu.Main; //Main menu
                 continue;
             case "3":
-                menu = Menu.Exit;
+                menu = Menu.Exit; 
                     break;
             default:
                 Console.Clear();
@@ -91,7 +91,6 @@ while (true)
                 continue;
         }
     }
-
 
     if (menu.Equals(Menu.Exit)) //Exit WebShop1
     {
