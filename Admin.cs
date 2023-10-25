@@ -147,7 +147,9 @@ public class Admin
 
                             foreach (var line in shoppingCartList)
                             {
-                                if (line.Contains(CustomerName))
+                                string[] user = line.Split(",");
+
+                                if (user[0] == CustomerName)
                                 {
                                     string[] splitLine = line.Split("+");
                                     string prodAndPrice = splitLine[1];
@@ -159,9 +161,10 @@ public class Admin
                                     x++;
 
                                 }
-                                else if (!line.Contains(CustomerName))
+                                else if (user[0] != CustomerName)
                                 {
                                     continue;
+
                                 }
                                 else
                                 {
