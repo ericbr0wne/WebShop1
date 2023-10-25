@@ -21,7 +21,6 @@ public class Customer
 
     public static void ReadInfo()
     {
-
         Console.Clear();
         Console.WriteLine("*********** USER INFORMATION ***********");
         Dictionary<string, int> customerList = new Dictionary<string, int>();
@@ -37,7 +36,6 @@ public class Customer
         }
         Console.WriteLine("Press enter to return");
         Console.ReadKey();
-
     }
 
     public static void Edit()
@@ -61,15 +59,11 @@ public class Customer
                 Console.ReadKey();
                 Console.Clear();
                 break;
-
         }
-
-
     }
+
     public static void LoginMenu()
     {
-
-
         Dictionary<string, int> product = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../product.txt");
         Choice Customer = Choice.Menu;
@@ -85,8 +79,6 @@ public class Customer
                 Console.WriteLine("3. Transaction history");
                 Console.WriteLine("4. Logout");
             }
-
-
 
             int customerChoice = 0;
             string? customerInput = Console.ReadLine();
@@ -113,9 +105,7 @@ public class Customer
                             Console.Clear();
                             Console.WriteLine("No valid option, Try again.\n");
                             break;
-
                     }
-
 
                     if (Customer.Equals(Choice.Products))
                     {
@@ -123,17 +113,14 @@ public class Customer
                         Product.Catalogue();
                         ShoppingCart.Add();
 
-
                         while (Customer.Equals(Choice.Products))
                         {
-
                             Console.WriteLine("Please choose from below:\n");
                             Console.WriteLine("1. Open your shopping cart");
                             Console.WriteLine("2. Add more product to your cart");
                             Console.WriteLine("3. Remove product from your cart");
                             Console.WriteLine("4. Do you want to checkout");
                             Console.WriteLine("5. Return to customer menu");
-
                             customerInput = Console.ReadLine();
                             switch (customerInput)
                             {
@@ -205,11 +192,8 @@ public class Customer
                                     continue;
                             }
                         }
-
-
-
-
                     }
+
                     if (Customer.Equals(Choice.Transactions))
                     {
                         Receipt.ReadReceipt();
@@ -217,6 +201,7 @@ public class Customer
                     }
                     break;
             }
+
             if (Customer.Equals(Choice.Exit))
             {
                 break;
@@ -249,6 +234,7 @@ public class Customer
         {
             string line = custList[i];
             List<string> user = new List<string>(line.Split(","));
+
             if (user[0] == oldUsername) 
             {
                 Console.WriteLine("\nNew Username(Only English letters): \n");
@@ -265,6 +251,7 @@ public class Customer
                     Console.Write("New Username: ");
                     newUsername = Console.ReadLine();
                 }
+
                 while (!Regex.IsMatch(newUsername, @"^[a-zA-Z-0-9]+$"))
                 {
                     Console.Clear();
@@ -276,7 +263,6 @@ public class Customer
                     Console.Write("New Username(Only English letters): ");
                     newUsername = Console.ReadLine();
                 }
-
                 custList[i] = newUsername + "," + user[1];
                 File.WriteAllLines("../../../customer.txt", custList);
                 notCustomer = false;
@@ -285,8 +271,8 @@ public class Customer
                 Console.ReadKey();
                 Admin.AdminLogin();
             }
-
         }
+
         if (notCustomer)
         {
             Console.Clear();
@@ -295,7 +281,6 @@ public class Customer
             Console.WriteLine("Press enter to continue");
             Console.ReadKey();
         }
-
     }
 
     public static void ChangePassword()
@@ -325,6 +310,7 @@ public class Customer
         {
             string line = custList[i];
             List<string> user = new List<string>(line.Split(","));
+
             if (user[0] == username && user[1] == oldPassword) 
             {
                 Console.WriteLine("\nNew Password(min. 6 characters & Only English letters): \n");
@@ -341,6 +327,7 @@ public class Customer
                     Console.Write("New Password: ");
                     newPassword = Console.ReadLine();
                 }
+
                 while (newPassword.Length < 6 || !Regex.IsMatch(newPassword, @"^[a-zA-Z-0-9]+$"))
                 {
                     Console.Clear();
@@ -361,9 +348,8 @@ public class Customer
                 Console.ReadKey();
                 Admin.AdminLogin();
             }
-            
-            
         }
+
             if (notPassword)
             {
                 Console.Clear();
@@ -373,5 +359,4 @@ public class Customer
                 Console.ReadKey();
             }
     }
-
 }

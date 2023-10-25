@@ -3,9 +3,6 @@ Menu menu = Menu.Main;
 
 while (true)
 {
-
-
-
     if (menu.Equals(Menu.Main))
     {
         Console.Clear();
@@ -20,6 +17,7 @@ while (true)
         Console.WriteLine("4. Exit");
         Console.WriteLine("=============================================");
     }
+
     if (menu.Equals(Menu.Main))
     {
         string? input = Console.ReadLine();
@@ -116,9 +114,6 @@ while (true)
         Console.Clear();
         Console.WriteLine("Thank you for shopping at WebShop1. Please come again!");
         break;
-
     }
-
-
 }
 
