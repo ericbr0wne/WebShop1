@@ -42,7 +42,7 @@ public class Login
                     Console.ReadKey();
                     File.WriteAllText("../../../LoggedIn.txt", username + "," + password);
 
-                    Customer.CustomerLoginMenu();
+                    Customer.LoginMenu();
                     customerCheck = false;
                     break;
                 }

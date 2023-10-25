@@ -10,7 +10,7 @@ namespace WebShop1;
 
 public class Customer
 {
-    public static void ReadCustInfo()
+    public static void ReadInfo()
     {
 
         Console.Clear();
@@ -31,31 +31,20 @@ public class Customer
 
     }
 
-    public static void EditCust()
+    public static void Edit()
     {
-
-        string? adminEditCustomer = Console.ReadLine();
-        int editCustomer = 0;
-
-        while (editCustomer == 0)
-            Console.WriteLine("Do you want to:");
+        Console.Clear();
+        Console.WriteLine("Do you want to:");
         Console.WriteLine("1. Change username");
         Console.WriteLine("2. Change password");
-        Console.WriteLine("3. Remove user");
         switch (Console.ReadLine())
         {
             case "1":
-                editCustomer = 1;
+                ChangeUsername();
                 break;
-
             case "2":
-                editCustomer = 2;
+                ChangePassword();
                 break;
-
-            case "3":
-                editCustomer = 3;
-                break;
-
             default:
                 Console.Clear();
                 Console.WriteLine("You didn't pick a valid option.");
@@ -63,26 +52,10 @@ public class Customer
                 Console.ReadKey();
                 Console.Clear();
                 break;
-        }
-        if (editCustomer == 1) //Change username
-        {
 
         }
-
-        if (editCustomer == 2) //Change password
-        {
-
-        }
-
-        if (editCustomer == 3) //remove user
-        {
-
-        }
-
-
     }
-
-    public static void CustomerLoginMenu()
+    public static void LoginMenu()
     {
 
 
@@ -129,15 +102,14 @@ public class Customer
                     }
 
 
-                    if (customerChoice == 1) // read in product list
+                    if (customerChoice == 1) 
                     {
                         Console.Clear();
                         Product.Catalogue();
-                        //menu för vill du adda till cart eller gå tillbaka till meny
-                        ShoppingCart.AddCart();
+                        ShoppingCart.Add();
 
 
-                        bool addCustCart = true;   //Samma som == customerChoice 2? Ska vi kombinera detta med den eller låta vara?
+                        bool addCustCart = true;
                         while (addCustCart)  
                         {
                            
@@ -152,21 +124,20 @@ public class Customer
                             switch (customerInput)
                             {
                                 case "1":
-                                    ShoppingCart.ReadCart();
+                                    ShoppingCart.Read();
                                     Console.WriteLine("Press any key to go back to the menu");
                                     Console.ReadKey();
-                                    //call shopping cart menu
                                     continue;
                                 case "2":
-                                    ShoppingCart.ReadCart();
-                                    ShoppingCart.AddCart();
+                                    ShoppingCart.Read();
+                                    ShoppingCart.Add();
                                     continue;
                                 case "3":
-                                    ShoppingCart.ReadCart();
-                                    ShoppingCart.RemoveCart();
+                                    ShoppingCart.Read();
+                                    ShoppingCart.Remove();
                                     continue;
                                 case "4":
-                                    ShoppingCart.CheckoutCart();
+                                    ShoppingCart.Checkout();
                                     customerChoice = 0;
                                     break;
                                 case "5":
@@ -180,11 +151,11 @@ public class Customer
                         }
                     }
 
-                    if (customerChoice == 2) // check shoppingcart
+                    if (customerChoice == 2) 
                     {
                         while (customerChoice == 2)
                         {
-                            ShoppingCart.ReadCart();
+                            ShoppingCart.Read();
                             Console.WriteLine();
                             Console.WriteLine("What do you want to do?");
                             Console.WriteLine("1. Do you want to checkout");
@@ -195,21 +166,20 @@ public class Customer
                             switch (customerInput)
                             {
                                 case "1":
-                                    ShoppingCart.CheckoutCart();
+                                    ShoppingCart.Checkout();
                                     customerChoice = 0;
                                     break;
                                 case "2":
-                                    ShoppingCart.ReadCart();
-                                    ShoppingCart.AddCart();
+                                    ShoppingCart.Read();
+                                    ShoppingCart.Add();
                                     continue;
                                 case "3":
-                                    ShoppingCart.ReadCart();
-                                    ShoppingCart.RemoveCart();
+                                    ShoppingCart.Read();
+                                    ShoppingCart.Remove();
                                     continue;
                                 case "4":
                                     customerChoice = 0;
                                     break;
-
                                 default:
                                     Console.Clear();
                                     Console.WriteLine("No valid option, Try again.\n");
@@ -256,11 +226,10 @@ public class Customer
         {
             string line = custList[i];
             List<string> user = new List<string>(line.Split(","));
-            if (user[0] == oldUsername) //Admin writes old username //then Admin writes new username // then new username replaces the old username
+            if (user[0] == oldUsername) 
             {
                 Console.WriteLine("\nNew Username(Only English letters): \n");
                 string newUsername = Console.ReadLine();
-                //line.Replace(oldUsername, newUsername);
 
                 while (newUsername.Length == 0)
                 {
@@ -333,11 +302,10 @@ public class Customer
         {
             string line = custList[i];
             List<string> user = new List<string>(line.Split(","));
-            if (user[0] == username && user[1] == oldPassword) //Admin writes old username //then Admin writes new username // then new username replaces the old username
+            if (user[0] == username && user[1] == oldPassword) 
             {
                 Console.WriteLine("\nNew Password(min. 6 characters & Only English letters): \n");
                 string newPassword = Console.ReadLine();
-                //line.Replace(oldUsername, newUsername);
 
                 while (newPassword.Length == 0)
                 {

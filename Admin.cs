@@ -91,34 +91,14 @@ public class Admin
 
                     if (admin.Equals(Choice.CheckCustomer))
                     {
-                        Customer.ReadCustInfo();
+                        Customer.ReadInfo();
                         admin = Choice.Main;
                     }
 
                     if (admin.Equals(Choice.EditCustomer))
                     {
-                        Console.Clear();
-                        Console.WriteLine("Do you want to:");
-                        Console.WriteLine("1. Change username");
-                        Console.WriteLine("2. Change password");
-                        switch (Console.ReadLine())
-                        {
-                            case "1":
-                                Customer.ChangeUsername();
-                                admin = Choice.Main;
-                                break;
-                            case "2":
-                                Customer.ChangePassword();
-                                admin = Choice.Main;
-                                break;
-                            default:
-                                Console.Clear();
-                                Console.WriteLine("You didn't pick a valid option.");
-                                Console.WriteLine("Please press enter to continue!");
-                                Console.ReadKey();
-                                Console.Clear();
-                                break;
-                        }
+                        Customer.Edit();
+                        admin = Choice.Main;
                     }
 
 
