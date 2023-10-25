@@ -1,3 +1,4 @@
 ﻿Benny,hejhej+Bärs,12_Choklad,20_Chips,25_Äpple,15_Chips,25_Chips,25_Bärs,12_/134*2023-10-16 11:14:49
 Benny,hejhej+Bärs,12_Choklad,20_Chips,25_Bärs,12_Choklad,20_Vodka,45_Äpple,15_Äpple,15_/164*2023-10-18 15:35:33
 Demo,hejhej+Choklad,20_Vatten,18_Chips,25_Choklad,20_/83*2023-10-19 10:35:28
+Ellen2,hejhej+Juice,25_Cider,25_Cider,25_/75*2023-10-25 14:44:18

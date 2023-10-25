@@ -14,3 +14,6 @@ Demo,hejhej+Choklad,20
 Demo,hejhej+Vatten,18
 Demo,hejhej+Chips,25
 Demo,hejhej+Choklad,20
+Ellen2,hejhej+Juice,25
+Ellen2,hejhej+Cider,25
+Ellen2,hejhej+Cider,25

@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace WebShop1;
 
-public class Customer
+public class Customer 
 {
+    private enum Choice
+    {
+        Menu,
+        Products,
+        Cart,
+        Transactions,
+        Exit
+    }
+
     public static void ReadInfo()
     {
 
@@ -54,6 +63,8 @@ public class Customer
                 break;
 
         }
+
+
     }
     public static void LoginMenu()
     {
@@ -61,38 +72,42 @@ public class Customer
 
         Dictionary<string, int> product = new Dictionary<string, int>();
         string[] productList = File.ReadAllLines("../../../product.txt");
-
+        Choice Customer = Choice.Menu;
         bool CustomerCheck = true;
         while (CustomerCheck)
         {
-            Console.Clear();
-            Console.WriteLine("Please choose from below:\n");
-            Console.WriteLine("1. Browse products");
-            Console.WriteLine("2. Shopping cart");
-            Console.WriteLine("3. Transaction history");
-            Console.WriteLine("4. Logout");
+            if (Customer.Equals(Choice.Menu))
+            {
+                Console.Clear();
+                Console.WriteLine("Please choose from below:\n");
+                Console.WriteLine("1. Browse products");
+                Console.WriteLine("2. Shopping cart");
+                Console.WriteLine("3. Transaction history");
+                Console.WriteLine("4. Logout");
+            }
 
 
 
             int customerChoice = 0;
             string? customerInput = Console.ReadLine();
             Console.Clear();
+
             switch (customerChoice)
             {
                 case 0:
                     switch (customerInput)
                     {
                         case "1":
-                            customerChoice = 1;
+                            Customer = Choice.Products;
                             break;
                         case "2":
-                            customerChoice = 2;
+                            Customer = Choice.Cart;
                             break;
                         case "3":
-                            customerChoice = 3;
+                            Customer = Choice.Transactions;
                             break;
                         case "4":
-                            CustomerCheck = false;
+                            Customer = Choice.Exit;
                             break;
                         default:
                             Console.Clear();
@@ -102,17 +117,16 @@ public class Customer
                     }
 
 
-                    if (customerChoice == 1) 
+                    if (Customer.Equals(Choice.Products))
                     {
                         Console.Clear();
                         Product.Catalogue();
                         ShoppingCart.Add();
 
 
-                        bool addCustCart = true;
-                        while (addCustCart)  
+                        while (Customer.Equals(Choice.Products))
                         {
-                           
+
                             Console.WriteLine("What do you want to do now?\n");
                             Console.WriteLine("1. Open your shopping cart");
                             Console.WriteLine("2. Add more producs to your cart");
@@ -138,10 +152,10 @@ public class Customer
                                     continue;
                                 case "4":
                                     ShoppingCart.Checkout();
-                                    customerChoice = 0;
+                                    Customer = Choice.Menu;
                                     break;
                                 case "5":
-                                    addCustCart = false;
+                                    Customer = Choice.Menu;
                                     continue;
                                 default:
                                     Console.Clear();
@@ -151,9 +165,9 @@ public class Customer
                         }
                     }
 
-                    if (customerChoice == 2) 
+                    if (Customer.Equals(Choice.Cart))
                     {
-                        while (customerChoice == 2)
+                        while (Customer.Equals(Choice.Cart))
                         {
                             ShoppingCart.Read();
                             Console.WriteLine();
@@ -167,18 +181,20 @@ public class Customer
                             {
                                 case "1":
                                     ShoppingCart.Checkout();
-                                    customerChoice = 0;
+                                    Customer = Choice.Menu;
                                     break;
                                 case "2":
                                     ShoppingCart.Read();
                                     ShoppingCart.Add();
+                                    Customer = Choice.Menu;
                                     continue;
                                 case "3":
                                     ShoppingCart.Read();
                                     ShoppingCart.Remove();
+                                    Customer = Choice.Menu;
                                     continue;
                                 case "4":
-                                    customerChoice = 0;
+                                    Customer = Choice.Menu;
                                     break;
                                 default:
                                     Console.Clear();
@@ -191,12 +207,16 @@ public class Customer
 
 
                     }
-                    if (customerChoice == 3)
+                    if (Customer.Equals(Choice.Transactions))
                     {
-
                         Receipt.ReadReceipt();
+                        Customer = Choice.Menu;
                     }
                     break;
+            }
+            if (Customer.Equals(Choice.Exit))
+            {
+                break;
             }
         }
     }
