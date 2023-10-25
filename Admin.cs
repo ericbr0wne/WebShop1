@@ -130,8 +130,8 @@ public class Admin
 
                     if (admin.Equals(Choice.Transactions))
                     {
-
-                        continue;
+                        Receipt.AdminCheck();
+                        admin = Choice.Main;
                     }
                     break;
 
