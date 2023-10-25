@@ -16,9 +16,7 @@ public class Login
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
         string[] adminList = File.ReadAllLines("../../../Admin.txt");
-
-        List<string> cartList = File.ReadAllLines("../../../LoggedIn.txt").ToList();
-
+               
         Console.WriteLine("**********LOGIN************");
         Console.WriteLine("Leave empty to exit");
         Console.WriteLine();
@@ -27,19 +25,16 @@ public class Login
         Console.Write("\nPassword: ");
         string? password = Console.ReadLine();
 
-        bool userfail = true;
-        bool adminfail = true;
-        string? custName = string.Empty;
-        string? custPass = string.Empty;
-        bool loginAccepted = true;
-        if (loginAccepted)
+        bool customerCheck = true;
+        bool adminCheck = true;
+        
+        if (customerCheck)
         {
 
             foreach (string login in loginList)
             {
-
-                List<string> user = new List<string>(login.Split(","));
-                if (user[0] == username && user[1] == password)
+                List<string> customer = new List<string>(login.Split(","));
+                if (customer[0] == username && customer[1] == password)
                 {
                     Console.Clear();
                     Console.WriteLine("Welcome " + username);
@@ -48,37 +43,37 @@ public class Login
                     File.WriteAllText("../../../LoggedIn.txt", username + "," + password);
 
                     Customer.CustomerLoginMenu();
-                    userfail = false;
+                    customerCheck = false;
                     break;
                 }
-                else if (user[0] != username && user[1] != password)
+                else if (customer[0] != username && customer[1] != password)
                 {
                     continue;
                 }
-
             }
-        }
-        if (loginAccepted)
-        {
 
+        }
+        if (adminCheck)
+        {
             foreach (string adminLine in adminList)
             {
-                List<string> adminCheck = new List<string>(adminLine.Split(","));
-                if (adminCheck[0] == username && adminCheck[1] == password)
+                List<string> adminInfo = new List<string>(adminLine.Split(","));
+
+                if (adminInfo[0] == username && adminInfo[1] == password)
                 {
 
                     File.WriteAllText("../../../LoggedIn.txt", username + "," + password);
                     Admin.AdminLogin();
-                    adminfail = false;
+                    adminCheck = false;
                     break;
                 }
-                else if (adminCheck[0] != username && adminCheck[1] != password)
+                else if (adminInfo[0] != username && adminInfo[1] != password)
                 {
                     continue;
                 }
 
             }
-            if (userfail && adminfail)
+            if (customerCheck && adminCheck)
             {
                 Console.Clear();
                 Console.WriteLine("Your username or password is incorrect\n");
@@ -88,10 +83,8 @@ public class Login
             }
         }
 
-
     }
-
-    
+  
 }
 
 

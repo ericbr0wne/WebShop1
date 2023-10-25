@@ -9,7 +9,7 @@ namespace WebShop1;
 
 public class ShoppingCart
 {
-    public static void ReadCart() //Reads cart + calculate and show total cost
+    public static void Read() 
     {
         List<string> cartList = File.ReadAllLines("../../../TempCart.txt").ToList();
         File.WriteAllText("../../../TempCart.txt", "");
@@ -29,7 +29,7 @@ public class ShoppingCart
         {
             if (line.Contains( loggedIn))
             {
-                string[] splitLine = line.Split("+"); //loggedInword =splitline[0] + produktpris = splitline[1]
+                string[] splitLine = line.Split("+"); 
                 string prodAndPrice = splitLine[1];
 
                 string[] prodSplit = splitLine[1].Split(",");
@@ -60,16 +60,14 @@ public class ShoppingCart
     }
 
 
-    public static void AddCart() //innehåller? 
-
+    public static void Add() 
     {
-        //save from login username,password+product,price-time&date
-
+       
         string[] productList = File.ReadAllLines("../../../Product.txt");
         Console.Clear();
 
         Console.WriteLine("This is the product list:");
-        Product.Catalogue(); //read productList
+        Product.Catalogue(); 
         Console.WriteLine();
         Console.WriteLine("Choose the number of product to add to Shopping Cart: ");
         Console.WriteLine();
@@ -89,7 +87,7 @@ public class ShoppingCart
             {
                 File.AppendAllText("../../../ShoppingCart.txt", loggedIn + "+");
                 File.AppendAllText("../../../ShoppingCart.txt", productList[i - 1] + Environment.NewLine);
-                ShoppingCart.LastCart();
+                ShoppingCart.Latest();
                 string[] Latest = File.ReadAllLines("../../../Latest.txt"); 
                 Console.Clear();
                 Console.WriteLine("You added " + Latest[Latest.Length - 1] + " to your list");
@@ -102,24 +100,24 @@ public class ShoppingCart
         }
     }
 
-    public static void RemoveCart()  //innehåller? Kan vi förklara de två listorna?
+    public static void Remove()  
 
     {
         Console.Clear();
-        ReadCart();
+        Read();
 
         Console.WriteLine();
         Console.WriteLine("What product do you wish to remove?");
         Console.WriteLine();
 
         {
-            List<string> cartList = File.ReadAllLines("../../../ShoppingCart.txt").ToList(); //To be able to remove from list
-            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt"); //To be able to count
+            List<string> cartList = File.ReadAllLines("../../../ShoppingCart.txt").ToList(); 
+            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt"); 
 
             Console.WriteLine();
             string? input = Console.ReadLine();
             string[] loginList = File.ReadAllLines("../../../customer.txt");
-            string loggedIn = string.Empty; //contains username and password
+            string loggedIn = string.Empty; 
             foreach (string usepass in loginList)
             {
                 loggedIn = usepass;
@@ -137,7 +135,7 @@ public class ShoppingCart
     }
 
 
-    public static void LastCart() //Vad gör denna? 
+    public static void Latest()  
     {
 
         Dictionary<string, int> cartList = new Dictionary<string, int>();
@@ -155,7 +153,7 @@ public class ShoppingCart
 
     }
 
-    public static void CheckoutCart()  //innehåller? Varje transaktion ska innehålla produkter som köpts, totalsumma, tid och datum.
+    public static void Checkout()  
     {
 
         Console.Clear();
@@ -174,7 +172,7 @@ public class ShoppingCart
         {
             if (line.Contains(loggedIn))
             {
-                string[] splitLine = line.Split("+"); //loggedInword =splitline[0] + produktpris = splitline[1]
+                string[] splitLine = line.Split("+"); 
                 string prodAndPrice = splitLine[1];
 
                 string[] prodSplit = prodAndPrice.Split(",");
