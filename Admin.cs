@@ -7,29 +7,40 @@ using System.Threading.Tasks;
 
 namespace WebShop1;
 
-public class Admin : Product
+public class Admin
 {
     private enum Choice
-    {
-        
+    { 
+        Menu,
+        AddProduct,
+        RemoveProduct,
+        CheckCustomer,
+        EditCustomer,
+        CustomerCart,
+        Transactions,
+        Exit,
     }
     public static void AdminLogin()
     {
 
         Dictionary<string, int> product = new Dictionary<string, int>();
-
+        Choice admin = Choice.Menu;
         bool adminCheck = true;
         while (adminCheck)
         {
-            Console.Clear();
-            Console.WriteLine("*********** Welcome Admin ***********\n");
-            Console.WriteLine("1. Add product");
-            Console.WriteLine("2. Remove product");
-            Console.WriteLine("3. Check costumer information");
-            Console.WriteLine("4. Edit costumer information");
-            Console.WriteLine("5. Browse costumer shoppingcart");
-            Console.WriteLine("6. Browse costumer transactions");
-            Console.WriteLine("7. Logout\n");
+            if (admin.Equals(Menu.Main))
+            {
+                Console.Clear();
+                Console.WriteLine("*********** Welcome Admin ***********\n");
+                Console.WriteLine("1. Add product");
+                Console.WriteLine("2. Remove product");
+                Console.WriteLine("3. Check costumer information");
+                Console.WriteLine("4. Edit costumer information");
+                Console.WriteLine("5. Browse costumer shoppingcart");
+                Console.WriteLine("6. Browse costumer transactions");
+                Console.WriteLine("7. Logout\n");
+            }
+
 
             int adminChoice = 0;
             string? adminInput = Console.ReadLine();
@@ -39,7 +50,7 @@ public class Admin : Product
                     switch (adminInput)
                     {
                         case "1":
-                            adminChoice = 1;
+                            admin = Choice.AddProduct;
                             break;
                         case "2":
                             adminChoice = 2;
@@ -69,12 +80,12 @@ public class Admin : Product
 
                     if (adminChoice == 1)
                     {
-                        AddProduct();
+                        Product.AddProduct();
                     };
 
                     if (adminChoice == 2)
                     {
-                        RemoveProduct();
+                        Product.RemoveProduct();
                         adminChoice = 0;
                         continue;
                     }
@@ -96,11 +107,11 @@ public class Admin : Product
                         switch (Console.ReadLine())
                         {
                             case "1":
-                                CustomEdit.Username();
+                                Customer.ChangeUsername();
                                 editCustomer = 1;
                                 continue;
                             case "2":
-                                CustomEdit.Password();
+                                Customer.ChangePassword();
                                 editCustomer = 2;
                                 continue;
                             default:
