@@ -10,8 +10,6 @@ namespace WebShop1;
 
 public class Register
 {
-
-
     public static void Customer()
     {
         Console.Clear();
@@ -30,6 +28,7 @@ public class Register
             Console.Write("New Username: ");
             username = Console.ReadLine();
         }
+
         while (!Regex.IsMatch(username, @"^[a-zA-Z-0-9]+$"))
             {
             Console.Clear();
@@ -42,7 +41,6 @@ public class Register
             username = Console.ReadLine();
         }
 
-        
         Console.Write("\nNew Password (min. 6 characters & Only English letters): ");
         string password = Console.ReadLine();
 
@@ -59,16 +57,10 @@ public class Register
             password = Console.ReadLine();
         }
         
-       
-
         Console.Clear();
         Console.WriteLine("Register\n");
         Console.WriteLine("Thank you for signing up " + username + "\nPress any key to continue\n");
         Console.ReadKey();
-
-
         File.AppendAllText("../../../customer.txt", $"{username},{password}" + Environment.NewLine);
-
     }
-
 }

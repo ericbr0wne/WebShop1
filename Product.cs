@@ -12,12 +12,12 @@ namespace WebShop1;
 
 public class Product
 {
-    public static void Catalogue() //add nr. and print productList
+    public static void Catalogue()
     {
         string[] productList = File.ReadAllLines("../../../Product.txt");
         int x = 1;
 
-        for (int y = 0; y < productList.Length; y++) 
+        for (int y = 0; y < productList.Length; y++)
         {
             string[] splitLine = productList[y].Split(",");
             Console.WriteLine(x + ". " + splitLine[0] + " " + splitLine[1] + ":-");
@@ -25,22 +25,20 @@ public class Product
         }
     }
 
-    public static void AddProduct() //add Product to list
+    public static void AddProduct()
     {
-
-        //Possibility to exit if you dont want to add any products
         Console.Clear();
         Console.WriteLine("This is the product list:");
-        Catalogue(); //read productList
+        Catalogue();
         Console.WriteLine();
         Console.WriteLine("*********** Add Product *********** ");
         Console.WriteLine();
         Console.WriteLine("Enter the product name:");
-        string? product = Console.ReadLine();   //Prodname
+        string? product = Console.ReadLine();
         Console.WriteLine();
         Console.WriteLine("Enter the product price:");
-        string? price = Console.ReadLine();     //Prodprice
-        string? prodAndPrice = product + "," + price;   //Temp hold PN "," and PP
+        string? price = Console.ReadLine();
+        string? prodAndPrice = product + "," + price;
         Console.WriteLine();
         Console.Clear();
         Console.WriteLine("*********** NEW PRODUCT ***********");
@@ -50,23 +48,19 @@ public class Product
         Catalogue();
         Console.WriteLine("\nPress enter to continue");
         Console.ReadKey();
-
     }
 
     public static void RemoveProduct()
-
     {
-        //Possibility to exit if you dont want to remove any products
         Console.Clear();
         Console.WriteLine("This is the product list:");
         Catalogue();
         Console.WriteLine();
         Console.WriteLine("What product do you wish to remove?");
         Console.WriteLine();
-
         {
-            List<string> prodList = File.ReadAllLines("../../../Product.txt").ToList(); //To be able to remove from list
-            string[] shoppingCartList = File.ReadAllLines("../../../Product.txt"); //To be able to count
+            List<string> prodList = File.ReadAllLines("../../../Product.txt").ToList();
+            string[] shoppingCartList = File.ReadAllLines("../../../Product.txt");
             Console.WriteLine();
             string? input = Console.ReadLine();
 

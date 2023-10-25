@@ -7,5 +7,4 @@ public enum Menu
     Login,
     Register,
     Exit
-
 }

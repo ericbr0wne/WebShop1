@@ -2,10 +2,6 @@
 using System.Threading.Channels;
 
 namespace WebShop1;
-//create()
-//string[] users = File.ReadAllLines("users.csv");
-//Setup() 
-
 
 public class NewUser
 {
@@ -27,7 +23,6 @@ public class NewUser
 
             if (!exists)
             {
-
                 string password = Console.ReadLine() ?? string.Empty;
                 string newUser = $"{username}, {password}{Environment.NewLine}";
                 File.AppendAllText("users.csv", newUser);
@@ -68,8 +63,4 @@ public class NewUser
             }
         }
     }
-
-
-
-
 }

@@ -23,7 +23,6 @@ public class Admin
     }
     public static void AdminLogin()
     {
-
         Choice admin = Choice.Main;
         while (true)
         {
@@ -39,8 +38,6 @@ public class Admin
                 Console.WriteLine("6. Browse costumer transactions");
                 Console.WriteLine("7. Logout\n");
             }
-
-
             switch (admin = Choice.Main)
             {
                 case 0:
@@ -74,8 +71,6 @@ public class Admin
                             Console.ReadKey();
                             break;
                     }
-                   
-
 
                     if (admin.Equals(Choice.AddProduct))
                     {
@@ -101,7 +96,6 @@ public class Admin
                         admin = Choice.Main;
                     }
 
-
                     if (admin.Equals(Choice.CustomerCart))
                     {
                         ShoppingCart.AdminCheck();
@@ -114,8 +108,6 @@ public class Admin
                         admin = Choice.Main;
                     }
                     break;
-
-
             }
 
             if (admin.Equals(Choice.Exit))
@@ -124,5 +116,4 @@ public class Admin
             }
         }
     }
-
 }

@@ -16,7 +16,7 @@ public class Login
         Console.Clear();
         string[] loginList = File.ReadAllLines("../../../customer.txt");
         string[] adminList = File.ReadAllLines("../../../Admin.txt");
-               
+
         Console.WriteLine("**********LOGIN************");
         Console.WriteLine("Leave empty to exit");
         Console.WriteLine();
@@ -30,10 +30,10 @@ public class Login
         
         if (customerCheck)
         {
-
             foreach (string login in loginList)
             {
                 List<string> customer = new List<string>(login.Split(","));
+
                 if (customer[0] == username && customer[1] == password)
                 {
                     Console.Clear();
@@ -46,13 +46,14 @@ public class Login
                     customerCheck = false;
                     break;
                 }
+
                 else if (customer[0] != username && customer[1] != password)
                 {
                     continue;
                 }
             }
-
         }
+
         if (adminCheck)
         {
             foreach (string adminLine in adminList)
@@ -67,24 +68,22 @@ public class Login
                     adminCheck = false;
                     break;
                 }
+
                 else if (adminInfo[0] != username && adminInfo[1] != password)
                 {
                     continue;
                 }
-
             }
+
             if (customerCheck && adminCheck)
             {
                 Console.Clear();
                 Console.WriteLine("Your username or password is incorrect\n");
                 Console.WriteLine("Press enter to continue.");
                 Console.ReadKey();
-
             }
         }
-
     }
-  
 }
 
 
