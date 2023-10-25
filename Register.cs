@@ -69,7 +69,7 @@ public class Register
 
 
         File.AppendAllText("../../../customer.txt", $"{username},{password}" + Environment.NewLine);
-        string[] registerList = File.ReadAllLines("../../../customer.txt");  //onödig?
+
     }
 
 }

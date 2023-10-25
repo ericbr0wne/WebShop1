@@ -89,15 +89,18 @@ public class Admin : Product
                     if (adminChoice == 4)
                     {
                         int editCustomer = 0;
+                        Console.Clear();
                         Console.WriteLine("Do you want to:");
                         Console.WriteLine("1. Change username");
                         Console.WriteLine("2. Change password");
                         switch (Console.ReadLine())
                         {
                             case "1":
+                                CustomEdit.Username();
                                 editCustomer = 1;
                                 continue;
                             case "2":
+                                CustomEdit.Password();
                                 editCustomer = 2;
                                 continue;
                             default:
