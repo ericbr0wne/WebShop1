@@ -80,10 +80,10 @@ public class Receipt
                 string[] splitTwo = artPriceFromRest[0].Split("_");
                 Console.WriteLine();
 
-                for (int i = 0; i < splitTwo.Length -1; i++)
+                for (int i = 0; i < splitTwo.Length - 1; i++)
                 {
-                   string[] artAndPrice = splitTwo[i].Split(",");
-                   Console.WriteLine("Prod: " + artAndPrice[0] + "\t" + artAndPrice[1] + ":-");
+                    string[] artAndPrice = splitTwo[i].Split(",");
+                    Console.WriteLine("Prod: " + artAndPrice[0] + "\t" + artAndPrice[1] + ":-");
                 }
 
                 string split3 = artPriceFromRest[1];
@@ -102,7 +102,65 @@ public class Receipt
         Console.WriteLine("Press enter to return");
         Console.ReadKey();
     }
+    public static void AdminCheck()
+    {
+        Console.Clear();
 
+        Console.WriteLine("Customer username: ");
+        string? CustomerName = Console.ReadLine();
 
+        string CustomerCheck = File.ReadAllText("../../../customer.txt");
 
+        if (CustomerCheck.Contains(CustomerName))
+        {
+            Console.Clear();
+            string[] receiptList = File.ReadAllLines("../../../Receipt.txt");
+                      
+            foreach (var line in receiptList)
+            {
+                if (line.Contains(CustomerName))
+                {
+
+                    string[] splitLineOne = line.Split("+");
+                    string[] splitOne = splitLineOne[0].Split(",");
+                    Console.WriteLine();
+                    Console.WriteLine("Customer: " + splitOne[0]);
+
+                    string split2 = splitLineOne[1];
+                    string[] artPriceFromRest = split2.Split("/");
+                    string[] splitTwo = artPriceFromRest[0].Split("_");
+                    Console.WriteLine();
+
+                    for (int i = 0; i < splitTwo.Length - 1; i++)
+                    {
+                        string[] artAndPrice = splitTwo[i].Split(",");
+                        Console.WriteLine("Prod: " + artAndPrice[0] + "\t" + artAndPrice[1] + ":-");
+                    }
+
+                    string split3 = artPriceFromRest[1];
+                    string[] splitThree = split3.Split("*");
+                    Console.WriteLine();
+                    Console.WriteLine("Total price: " + splitThree[0] + "\n\nDate: " + splitThree[1]);
+
+                    Console.WriteLine("\n");
+                    Console.WriteLine("****************************");
+                }
+                else if (!line.Contains(CustomerName))
+                {
+                    continue;
+                }
+              
+             }
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to Admin menu");
+            Console.ReadKey();
+        }
+        else
+        {
+            Console.WriteLine();
+            Console.WriteLine("This user does not exist \n");
+            Console.Write("Press any key to continue");
+            Console.ReadKey();
+        }
+    }
 }

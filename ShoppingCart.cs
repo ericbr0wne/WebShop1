@@ -7,7 +7,7 @@ using WebShop1;
 
 namespace WebShop1;
 
-public class ShoppingCart : Login //why do we have Inheritence from Login?
+public class ShoppingCart
 {
     public static void ReadCart() //Reads cart + calculate and show total cost
     {
@@ -208,7 +208,7 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
         Console.Clear();
 
         Console.WriteLine("Customer username: ");
-        string CustomerName = Console.ReadLine();
+        string? CustomerName = Console.ReadLine();
 
         string CustomerCheck = File.ReadAllText("../../../customer.txt");
 
@@ -266,6 +266,8 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
             Console.ReadKey();
         }
     }
+
+    
 
 }
 
