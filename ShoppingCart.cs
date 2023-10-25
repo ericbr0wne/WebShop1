@@ -2,6 +2,8 @@
 using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using WebShop1;
 
 namespace WebShop1;
 
@@ -199,53 +201,71 @@ public class ShoppingCart : Login //why do we have Inheritence from Login?
         Console.WriteLine("You have now completed your transaction, thank you for shopping.");
         Console.WriteLine("Press enter to continue.");
         Console.ReadKey();
-
-        /*
-        Checkout -
-        alla filer från shoppingcart.txt med username+password
-        print username + password ONCE                                                 Benny,hejhej+        
-        foreach item in shoppingcart.txt med username+password add productname         pear
-                                                                                       apple   
-                                                                                       banana
-        
-        add total cost                                                                 total cost: 15:-
-        
-        When finished add date and time stamp                                          2023-10-16
-        
-        space for new                                                                  **********************************
-
-        Checkout -
-        alla filer från shoppingcart.txt med username+password
-        print username + password ONCE                                                 Jonny,hejhej+        
-        foreach item in shoppingcart.txt med username+password add productname         pear
-                                                                                       apple   
-                                                                                       banana
-        
-        add total cost                                                                 total cost: 15:-
-        
-        When finished add date and time stamp                                          2023-10-16
-        
-        space for new                                                                  **********************************
-
-
-        Jonny,hejhej+pear,apple,banana-15,2023-10-16
-
-
-
-        display reciept username + prods + timestamp
-
-
-
-        */
-
-
-
-
-
-
-
+                                 
     }
+    public static void AdminCheck()
+    {
+        Console.Clear();
 
+        Console.WriteLine("Customer username: ");
+        string CustomerName = Console.ReadLine();
+
+        string CustomerCheck = File.ReadAllText("../../../customer.txt");
+
+        if (CustomerCheck.Contains(CustomerName))
+        {
+            string[] shoppingCartList = File.ReadAllLines("../../../ShoppingCart.txt");
+            int cartSum = 0;
+            int x = 1;
+            Console.Clear();
+            Console.WriteLine("This is in " + CustomerName + "'s cart: ");
+            Console.WriteLine();
+
+            foreach (var line in shoppingCartList)
+            {
+                string[] user = line.Split(",");
+
+                if (user[0] == CustomerName)
+                {
+                    string[] splitLine = line.Split("+");
+                    string prodAndPrice = splitLine[1];
+
+                    string[] prodSplit = splitLine[1].Split(",");
+                    int.TryParse(prodSplit[1], out int price);
+                    cartSum += price;
+                    Console.WriteLine(x + ". " + prodSplit[0]);
+                    x++;
+
+                }
+                else if (user[0] != CustomerName)
+                {
+                    continue;
+
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("The cart is empty!");
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine();
+            Console.WriteLine("Total sum: " + cartSum + ":-");
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to Admin menu");
+            Console.ReadKey();
+        }
+
+        else
+        {
+            Console.WriteLine();
+            Console.WriteLine("This user does not exist \n");
+            Console.Write("Press any key to continue");
+            Console.ReadKey();
+        }
+    }
 
 }
 

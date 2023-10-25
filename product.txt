@@ -5,3 +5,4 @@ Vodka,45
 Juice,25
 Vatten,18
 Boll,25
+,
