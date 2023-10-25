@@ -127,10 +127,10 @@ public class Customer
                         while (Customer.Equals(Choice.Products))
                         {
 
-                            Console.WriteLine("What do you want to do now?\n");
+                            Console.WriteLine("Please choose from below:\n");
                             Console.WriteLine("1. Open your shopping cart");
-                            Console.WriteLine("2. Add more producs to your cart");
-                            Console.WriteLine("3. Remove product(s) from your cart");
+                            Console.WriteLine("2. Add more product to your cart");
+                            Console.WriteLine("3. Remove product from your cart");
                             Console.WriteLine("4. Do you want to checkout");
                             Console.WriteLine("5. Return to customer menu");
 
@@ -141,15 +141,18 @@ public class Customer
                                     ShoppingCart.Read();
                                     Console.WriteLine("Press any key to go back to the menu");
                                     Console.ReadKey();
-                                    continue;
+                                    Customer = Choice.Menu;
+                                    break;
                                 case "2":
                                     ShoppingCart.Read();
                                     ShoppingCart.Add();
-                                    continue;
+                                    Customer = Choice.Menu;
+                                    break;
                                 case "3":
                                     ShoppingCart.Read();
                                     ShoppingCart.Remove();
-                                    continue;
+                                    Customer = Choice.Menu;
+                                    break;
                                 case "4":
                                     ShoppingCart.Checkout();
                                     Customer = Choice.Menu;
@@ -171,7 +174,7 @@ public class Customer
                         {
                             ShoppingCart.Read();
                             Console.WriteLine();
-                            Console.WriteLine("What do you want to do?");
+                            Console.WriteLine("Please choose from below:\n");
                             Console.WriteLine("1. Do you want to checkout");
                             Console.WriteLine("2. Do you want to add products");
                             Console.WriteLine("3. Do you want to remove products");
@@ -187,19 +190,19 @@ public class Customer
                                     ShoppingCart.Read();
                                     ShoppingCart.Add();
                                     Customer = Choice.Menu;
-                                    continue;
+                                    break;
                                 case "3":
                                     ShoppingCart.Read();
                                     ShoppingCart.Remove();
                                     Customer = Choice.Menu;
-                                    continue;
+                                    break;
                                 case "4":
                                     Customer = Choice.Menu;
                                     break;
                                 default:
                                     Console.Clear();
                                     Console.WriteLine("No valid option, Try again.\n");
-                                    break;
+                                    continue;
                             }
                         }
 

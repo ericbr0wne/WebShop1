@@ -17,3 +17,13 @@ Demo,hejhej+Choklad,20
 Ellen2,hejhej+Juice,25
 Ellen2,hejhej+Cider,25
 Ellen2,hejhej+Cider,25
+Jonny,hejhej+Juice,25
+Benny,hejhej+Cider,25
+Benny,hejhej+Cider,25
+Benny,hejhej+Cider,25
+Benny,hejhej+Boll,25
+Benny,hejhej+Vodka,45
+Benny,hejhej+Chips,25
+Jonny,hejhej+Vatten,18
+Jonny,hejhej+Boll,25
+Jonny,hejhej+Juice,25
