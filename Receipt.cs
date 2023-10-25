@@ -58,19 +58,15 @@ public class Receipt
         Console.WriteLine("Here are your receipts\n");
         Dictionary<string, int> cartList = new Dictionary<string, int>();
         string[] receiptList = File.ReadAllLines("../../../Receipt.txt");
-        string[] loginList = File.ReadAllLines("../../../customer.txt");
-        string usernamepass = string.Empty;
-        foreach (string usepass in loginList)
-        {
-            usernamepass = usepass;
-        }
+        string[] loginList = File.ReadAllLines("../../../LoggedIn.txt");
+        string loggedIn = loginList[0];
+
+
         foreach (var line in receiptList)
         {
-            if (line.Contains(usernamepass))
-            {
-
-
                 string[] splitLineOne = line.Split("+");
+            if (loggedIn.Equals(splitLineOne[0]))
+            {
                 string[] splitOne = splitLineOne[0].Split(",");
                 Console.WriteLine();
                 Console.WriteLine("Customer: " + splitOne[0]);
@@ -94,7 +90,7 @@ public class Receipt
                 Console.WriteLine("\n");
                 Console.WriteLine("****************************");
             }
-            else if (!line.Contains(usernamepass))
+            else if (!loggedIn.Equals(splitLineOne[0]))
             {
                 continue;
             }
